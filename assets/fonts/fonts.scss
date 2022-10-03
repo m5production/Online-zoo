@@ -1,0 +1,75 @@
+@mixin smallParagraphFont {
+    font: {
+        family: Roboto, Arial, sans-serif;
+        size: 15px;
+        weight: 300;
+    }
+
+    line-height: 120%;
+}
+
+@mixin bodyFont {
+    font: {
+        family: Roboto, Arial, sans-serif;
+        size: 16px;
+        weight: 400;
+    }
+
+    line-height: 140%;
+    color: #000000;
+}
+
+@mixin bodyBtnFont {
+    font: {
+        family: Roboto, Arial, sans-serif;
+        size: 16px;
+        weight: 500;
+    }
+
+    line-height: 140%;
+}
+
+@mixin subtitleFont {
+    font: {
+        family: Roboto, Arial, sans-serif;
+        size: 24px;
+        weight: 400;
+    }
+
+    line-height: 120%;
+    color: #000000;
+}
+
+@mixin h3Font {
+    font: {
+        family: Roboto, Arial, sans-serif;
+        size: 36px;
+        weight: 400;
+    }
+
+    line-height: 130%;
+    color: #333B41;
+}
+
+@mixin h2Font {
+    font: {
+        family: Roboto, Arial, sans-serif;
+        size: 48px;
+        weight: 400;
+    }
+
+    line-height: 120%;
+    color: #000000;
+}
+
+@mixin h1Font {
+    font: {
+        family: Roboto, Arial, sans-serif;
+        size: 106px;
+        weight: 700;
+    }
+
+    text-transform: uppercase;
+    line-height: 75%;
+    color: #FFFFFF;
+}

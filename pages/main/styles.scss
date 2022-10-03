@@ -1,0 +1,672 @@
+@import '../../assets/fonts/fonts.scss';
+@import '../../assets/styles/logo.scss';
+
+$activeColor: #4B9200;
+$mistakeColor: #D31414;
+
+.main-btn {
+    margin: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 298px;
+    height: 54px;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border-radius: 25px;
+    cursor: pointer;
+    @include bodyBtnFont;
+    text-transform: uppercase;
+    color: #FFFFFF;
+
+    &:hover {
+        background: #E47209;
+    }
+}
+
+.logo {
+    width: 82px;
+    height: 52px;
+    border: 1px solid #FFFFFF;
+    border-radius: 2px;
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    @include logoPetStoryOnline;
+
+    &-text::after {
+        content: "";
+        background-image: url('../../assets/images/main/header/bamboo.svg');
+
+        width: 13px;
+        height: 21px;
+        position: absolute;
+        right: 58px;
+        bottom: 8px;
+    }
+
+    &:hover {
+        background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+        background-clip: text;
+        color: transparent;
+        border-color: #F9804B;
+    }
+}
+
+.nav-list {
+    display: flex;
+    min-width: 40%;
+    justify-content: space-between;
+
+    .current-page {
+        @include bodyBtnFont;
+        background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+        color: transparent;
+        background-clip: text;
+
+        cursor: default;
+    }
+
+    a {
+        font-weight: normal;
+        @include bodyBtnFont;
+        color: #FFFFFF;
+    }
+
+    a:not(.current-page):hover {
+        color: #F9804B;
+    }
+
+}
+
+.header-wrapper {
+    min-height: 80px;
+    padding-top: 14px;
+    background-color: #000000;
+
+    .main-title {
+        display: none;
+    }
+
+    .main-header {
+        max-width: 1160px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            margin-right: 63px;
+        }
+
+        nav {
+            min-width: 40%;
+        }
+
+        .copyright {
+            margin-left: auto;
+
+            a {
+                @include bodyBtnFont;
+                color: #FFFFFF;
+
+                &:hover {
+                    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                    color: transparent;
+                    background-clip: text;
+                }
+            }
+        }
+    }
+}
+
+.hero-wrapper {
+    background-image: url('../../assets/images/main/hero/Giant\ Panda.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top -80px left 0;
+
+    .hero {
+        margin: 0 auto;
+        padding: 86px 0 100px 0;
+        max-width: 1160px;
+
+        .text-wrapper {
+            position: relative;
+            box-sizing: border-box;
+            max-width: 500px;
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 465px;
+                height: 465px;
+                background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                border-radius: 50%;
+                left: -73px;
+                top: -74px;
+            }
+        }
+
+        p {
+            @include h1Font;
+            text-align: center;
+            z-index: 1;
+
+            span {
+                color: #FFEE2E;
+            }
+        }
+    }
+}
+
+.decoration-wrapper {
+    background-image: url('../../assets/images/main/about/flower_foto1.png'),
+        url('../../assets/images/main/gallery/decorative/palm_foto.png'),
+        url('../../assets/images/main/gallery/decorative/strelitzia\ 1.png');
+    background-repeat: no-repeat,
+        no-repeat,
+        no-repeat;
+    background-position: right 0 top 12px,
+        left 0 bottom 0,
+        right 0 bottom 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .about {
+        max-width: 1160px;
+        padding: 140px 0 180px;
+
+        .content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            img {
+                display: block;
+                object-fit: contain;
+            }
+
+            .about-text {
+                flex-basis: 465px;
+                background-color: white;
+
+                h2 {
+                    @include h2Font;
+                }
+
+                h2+p {
+                    @include bodyFont;
+                    line-height: 130%;
+                }
+
+                .subtitle {
+                    @include subtitleFont;
+                }
+
+                p {
+                    @include bodyFont;
+                }
+            }
+        }
+    }
+
+    .gallery {
+        max-width: 1160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 80px;
+        padding: 100px;
+
+        .cards-collection-container {
+            position: relative;
+
+            .gallery-btn {
+                position: absolute;
+                top: 50%;
+                translate: 0 -50%;
+
+                width: 62px;
+                height: 62px;
+                border-color: transparent;
+                background-clip: content-box;
+                border-radius: 50%;
+                background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg'),
+                    linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                background-repeat: no-repeat;
+                background-position: center;
+
+                &:hover {
+                    background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg');
+                    background-color: #E47209;
+                }
+            }
+
+            .prev {
+                left: -82px;
+            }
+
+            .next {
+                right: -82px;
+                transform: rotate(180deg);
+            }
+        }
+
+        .animal-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+
+            .card {
+                width: 366px;
+                height: 366px;
+                border: 1px solid #FA6F32;
+                // border-image: linear-gradient(-45deg, #FA6F32 100%, #FE9013 100%) 1;
+                border-radius: 5px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+
+                img {
+                    transition: transform 0.3s;
+                }
+
+                &:hover img {
+                    transform: scale(calc(376/366));
+                }
+
+                .card-text {
+                    transition: translate 0.3s;
+                    padding: 8px 0 14px 16px;
+                    background-color: rgba(13, 12, 13, 0.742);
+                    color: white;
+
+                    display: flex;
+                    flex-direction: column;
+
+                    p:first-of-type {
+                        @include bodyBtnFont;
+                        text-transform: uppercase;
+                    }
+
+                    p+p {
+                        @include smallParagraphFont;
+                    }
+                }
+
+                .vegy {
+                    background-image: url('../../assets/images/main/gallery/decorative/diet-pics/banana.svg'),
+                        url('../../assets/images/main/gallery/decorative/diet-pics/bamboo.svg');
+                    background-repeat: no-repeat;
+                    background-position: right 12px bottom 18px,
+                        right 18px bottom 13px;
+                }
+
+                .meat-eater {
+                    background-image: url('../../assets/images/main/gallery/decorative/diet-pics/fish.svg'),
+                        url('../../assets/images/main/gallery/decorative/diet-pics/steak_icon.svg');
+                    background-repeat: no-repeat;
+                    background-position: right 8px bottom 14px,
+                        right 19px bottom 15px;
+                }
+
+                &:hover .card-text {
+                    translate: 0 -60px;
+                }
+            }
+        }
+    }
+}
+
+.pick-and-feed-wrapper {
+    background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 0 100px;
+
+    .pick-and-feed-content-wrapper {
+        max-width: 1160px;
+        padding: 41px 0 59px;
+        background: rgba(253, 253, 255, 0.52);
+        backdrop-filter: blur(2px);
+        border-radius: 20px;
+
+        .pick-and-feed-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+
+            .pick-and-feed-text {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                h2 {
+                    align-self: center;
+                    @include h2Font;
+                    color: #FE9013;
+                }
+
+                &>p {
+                    margin-left: 99px;
+                    @include bodyFont;
+                    line-height: 130%;
+
+                    color: #333B41;
+                }
+
+                p.subtitle {
+                    font-size: 24px;
+                    line-height: 120%;
+                    margin-bottom: 10px;
+                }
+
+                .subtitle+p {
+                    font-weight: 500;
+                    margin-bottom: -20px;
+                }
+
+                .donate-ref {
+                    border-bottom: 1px solid #FE9013;
+                }
+            }
+
+            .workflow {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+
+                h3 {
+                    @include h3Font;
+                }
+
+                .pay-to-feed-process {
+                    display: flex;
+                    gap: 30px;
+
+                    &::after {
+                        order: 4;
+                        margin-top: calc(168px/2 - 17px);
+                        content: url('../../assets/images/main/pay-to-feed/arrow.svg');
+                    }
+
+                    &::before {
+                        order: 2;
+                        margin-top: calc(168px/2 - 17px);
+                        content: url('../../assets/images/main/pay-to-feed/arrow.svg');
+                    }
+
+                    li {
+                        width: 168px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 30px;
+
+                        &::before {
+                            content: "";
+                            height: 168px;
+                            border: 1px solid #F9804B;
+                            border-radius: 5px;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-color: white;
+                        }
+
+                        p {
+                            @include bodyFont;
+                        }
+                    }
+
+                    .stage1 {
+                        order: 1;
+
+                        &::before {
+                            background-image: url('../../assets/images/main/pay-to-feed/pay-card.svg');
+                        }
+                    }
+
+                    .stage2 {
+                        order: 3;
+
+                        &::before {
+                            background-image: url('../../assets/images/main/pay-to-feed/money-to-grow.svg');
+                        }
+                    }
+
+                    .stage3 {
+                        order: 5;
+
+                        &::before {
+                            background-image: url('../../assets/images/main/pay-to-feed/feed-pet.svg');
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.feedback-wrapper {
+    width: 100%;
+    padding: 140px 0 204px;
+    background-image: url('../../assets/images/main/feedback/leaf_foto.png');
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position: bottom -130px right 0;
+
+    .feedback {
+        max-width: 1160px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+            @include h3Font;
+            margin-bottom: 47px;
+        }
+
+        .feedback-track-container {
+            width: 100%;
+            margin-bottom: 21px;
+
+            .feedback-track {
+                display: flex;
+                gap: 30px;
+
+                article {
+                    width: 268px;
+                    height: 391px;
+                    padding: 15px 15px 19px;
+                    background-color: #F1F3F2;
+                    border: 2px solid;
+                    border-color: rgb(254, 189, 171);
+                    border-radius: 20px;
+                    display: grid;
+                    gap: 10px;
+                    grid-template-columns: 37px 1fr;
+
+                    .user-data {
+                        h1 {
+                            @include bodyFont;
+                            line-height: 120%;
+                        }
+
+                        .location-time {
+                            @include smallParagraphFont;
+                            color: #BDBDBD;
+                        }
+                    }
+
+                    .feedback-text {
+                        grid-column: span 2;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+
+        .scroll-bar {
+            width: 600px;
+            height: 8px;
+            margin-bottom: 31px;
+            border: 1px solid;
+            border-color: rgb(254, 189, 171);
+            border-radius: 5px;
+            background-color: #F1F3F2;
+        }
+
+        .leave-feedback {
+            align-self: flex-start;
+            border-radius: 5px;
+        }
+    }
+}
+
+.footer-wrapper {
+    padding: 41px 0 50px;
+    background-color: #000000;
+
+    footer {
+        max-width: 1160px;
+        margin: 0 auto;
+        @include bodyFont;
+        color: white;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+
+        .donate-for-volunteers {
+            border-radius: 5px;
+            grid-row: 2;
+        }
+
+        .socials {
+            grid-row: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+
+                &::before {
+                    content: '';
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                    border-color: transparent;
+                    background-color: rgba(196, 196, 196, 0.5);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            }
+
+            .facebook::before {
+                background-image: url('../../assets/images/footer/socials/facebook.svg');
+            }
+
+            .twitter::before {
+                background-image: url('../../assets/images/footer/socials/twitter.svg');
+            }
+
+            .instagram::before {
+                background-image: url('../../assets/images/footer/socials/instagram.svg');
+            }
+
+            .youtube::before {
+                background-image: url('../../assets/images/footer/socials/youtube.svg');
+            }
+        }
+
+        .footer-nav {
+            grid-row: 3;
+            align-self: end;
+        }
+
+        .subscription {
+            grid-column: 3;
+            @include subtitleFont;
+            color: white;
+            display: grid;
+            grid-template-columns: 62% 1fr;
+            grid-template-rows: 40px 40px;
+            row-gap: 5px;
+            column-gap: 10px;
+
+            label {
+                grid-column: span 2;
+            }
+
+            input {
+                padding: 10px;
+                background-color: #000000;
+                border-width: 1px;
+                border-radius: 2px;
+                border-color: #F9804B;
+                color: white;
+
+                ::placeholder {
+                    color: #BDBDBD;
+                }
+
+                &:active {
+                    border-color: $activeColor;
+                }
+
+                &:invalid {
+                    border-color: $mistakeColor;
+
+                    input::placeholder {
+                        color: $mistakeColor;
+                    }
+                }
+            }
+
+            .btn-submit {
+                text-transform: capitalize;
+                background: #F1F3F2;
+                /* black_blue */
+
+                border: 1px solid #F9804B;
+                border-radius: 5px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &:active {
+                    color: $activeColor;
+                    border-color: $activeColor;
+                }
+            }
+        }
+
+        .site-designer {
+            align-self: end;
+            justify-self: end;
+            grid-column: 3;
+            grid-row: 3;
+
+            font-weight: 100;
+            color: rgba(255, 255, 255, 0.4);
+        }
+    }
+}
