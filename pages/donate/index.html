@@ -3,8 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap">
     <link rel="stylesheet" href="../../assets/styles/normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/styles/myReset.css">
+    <link rel="stylesheet" href="styles.css">
     <title>PetStory online - Donation information</title>
 </head>
 
@@ -36,87 +41,123 @@
 
     <div class="hero"></div>
 
-    <section class="donation-info">
-        <h3>THE ZOO HAS OFFICIALLY REOPENED BUT WE STILL NEED YOUR HELP!</h3>
-        <p>Even though the Zoo has been able to&nbsp;reopen, we&nbsp;are at&nbsp;a&nbsp;greatly reduced capacity with educational programs and public and private events cancelled or&nbsp;postponed for additional months. We&nbsp;need you now more than ever to&nbsp;help ensure that we&nbsp;overcome these challenges. We&nbsp;have been actively raising funds in&nbsp;the community, and we&nbsp;are grateful for the generosity. But much more support is&nbsp;still needed, and we&nbsp;need your help! Please consider a&nbsp;gift today&nbsp;&mdash; no&nbsp;matter what size&nbsp;&mdash to&nbsp;help&nbsp;us sustain our mission.</p>
+    <div class="donation-call-wrapper">
+        <div class="content-wrapper">
+            <section class="donation-call">
+                <h3 class="donation-call-heading">THE ZOO HAS OFFICIALLY REOPENED BUT WE STILL NEED YOUR HELP!</h3>
+                <p class="donation-call-text">Even though the Zoo has been able to&nbsp;reopen, we&nbsp;are
+                    at&nbsp;a&nbsp;greatly reduced capacity with educational programs and public and private events
+                    cancelled or&nbsp;postponed for additional months. We&nbsp;need you now more than ever to&nbsp;help
+                    ensure that we&nbsp;overcome these challenges. We&nbsp;have been actively raising funds in&nbsp;the
+                    community, and we&nbsp;are grateful for the generosity. But much more support is&nbsp;still needed,
+                    and we&nbsp;need your help! Please consider a&nbsp;gift today&nbsp;&mdash; no&nbsp;matter what
+                    size&nbsp;&mdash to&nbsp;help&nbsp;us sustain our mission.</p>
+            </section>
 
-        <h3>Donation information</h3>
+            <h3 class="donation-info-heading">Donation information</h3>
 
-        <section class="donation-scheme">
-            <h2>Pick and feed a friend</h2>
-            <p>We&nbsp;know the animals bring you joy, and in&nbsp;these extraordinary
-                times, we&rsquo;re glad.</p>
-            <div class="animal-diet">
-                <p>4</p>
-                <p>Panda diet for the day.</p>
-                &#10005;
-                <div class="animal-avatar"></div>
+            <div class="pick-and-feed-wrapper">
+                <section class="pick-and-feed">
+                    <h2 class="pick-and-feed-heading">Pick and feed a friend</h2>
+                    <p class="pick-and-feed-subtitle subtitle">We&nbsp;know the animals bring you joy, and in&nbsp;these
+                        extraordinary times, we&rsquo;re glad.
+                    </p>
+                    <div class="pick-and-feed-animal-diet">
+                        <p class="number-of-animals">4</p>
+                        <p class="diet-per-day">Panda diet for the day.</p>
+                        <div class="multiplication-sign">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                        <img class="animal-avatar"
+                            src="../../assets/images/donate/pick-and-feed/animals-widget.svg"></img>
+                    </div>
+
+                    <div class="pick-and-feed-donation-schale">
+                        <p>Amount</p>
+                        <div class="pick-and-feed-donation-schale-progress-bar">
+                            <div class="donation-schale-line">
+                                <div class="donation-schale-line-sum" id="5000"></div>
+                                <div class="donation-schale-line-sum" id="2000"></div>
+                                <div class="donation-schale-line-sum chosen" id="1000"></div>
+                                <div class="donation-schale-line-sum" id="500"></div>
+                                <div class="donation-schale-line-sum" id="250"></div>
+                                <div class="donation-schale-line-sum" id="100"></div>
+                                <div class="donation-schale-line-sum" id="50"></div>
+                                <div class="donation-schale-line-sum" id="25"></div>
+                            </div>
+                        </div>
+                        <ul class="pick-and-feed-donation-schale-sums">
+                            <li class="sum">&dollar;5000</li>
+                            <li class="sum">&dollar;2000</li>
+                            <li class="sum chosen">&dollar;1000</li>
+                            <li class="sum">&dollar;500</li>
+                            <li class="sum">&dollar;250</li>
+                            <li class="sum">&dollar;100</li>
+                            <li class="sum">&dollar;50</li>
+                            <li class="sum">&dollar;25</li>
+                        </ul>
+                    </div>
+
+                    <form class="pick-and-feed-user-donation-custom" action="">
+                        <input class="pick-and-feed-user-donation-custom-sum" type="number"
+                            name="pick-and-feed-user-donation-field" id="donation" placeholder="Another amount">
+
+                        <div class="pick-and-feed-user-donation-custom-frequency">
+                            <div class="first-option">
+                                <input type="radio" id="monthly" name="donation-frequency">
+                                <label for="monthly">Monthly</label>
+                            </div>
+
+                            <div class="second-option">
+                                <input type="radio" id="once" name="donation-frequency">
+                                <label for="once">Once</label>
+                            </div>
+                        </div>
+
+                        <button class="main-btn" type="submit">Feed a friend now</button>
+                    </form>
+
+                    <p>Share with your friends on social networks</p>
+                </section>
             </div>
-
-            <div class="donation-schale">
-                <p>Amount</p>
-                <img src="" alt="" class="schale">
-                <div class="dollars">
-                    <li>&dollar;5000</li>
-                    <li>&dollar;2000</li>
-                    <li>&dollar;1000</li>
-                    <li>&dollar;500</li>
-                    <li>&dollar;250</li>
-                    <li>&dollar;100</li>
-                    <li>&dollar;50</li>
-                    <li>&dollar;25</li>
-                </div>
-            </div>
-
-            <form action="">
-                <label for="donation">Another sum</label>
-                <input type="number" name="donation" id="donation" value="Another amount">
-            </form>
-
-            <form action="">
-                <input type="radio" id="monthly" name="Monthly donation">
-                <label for="monthly">Monthly</label>
-
-                <input type="radio" id="once" name="Single-time donation">
-                <label for="once">Once</label>
-
-                <button class="feed-friend" type="submit">Feed a friend now</button>
-            </form>
-
-            <p>Share with your friends on social networks</p>
-        </section>
-    </section>
+        </div>
+    </div>
 </body>
 
-<footer>
-    <div class="logo">PetStory online</div>
-    <button class="donate-for-volunteers">donate for volunteers</button>
-    <ul class="socials">
-        <li>Facebook</li>
-        <li>Twitter</li>
-        <li>Instagram</li>
-        <li>YouTube</li>
-    </ul>
+<div class="footer-wrapper">
+    <footer>
 
-    <ul class="footer-nav">
-        <li>About</li>
-        <li>Map</li>
-        <li>Zoos</li>
-        <li>Contact us</li>
-    </ul>
+        <a href="#" class="logo">
+            <p class="logo-text">PetStory online</p>
+        </a>
+        <a href="../donate/index.html" class="main-btn donate-for-volunteers">donate for volunteers</a>
 
-    <div class="subscription">
-        <h3>Subscribe to our news</h3>
-        <form action="">
-            <label for="user-email"></label>
-            <input type="email" id="user-email" name="user-email" value="Enter your email">
+        <ul class="socials">
+            <li><a class="facebook" href="https://ru-ru.facebook.com/">Facebook</a></li>
+            <li><a class="twitter" href="https://twitter.com/">Twitter</a></li>
+            <li><a class="instagram" href="https://www.instagram.com/">Instagram</a></li>
+            <li><a class="youtube" href="https://www.youtube.com/">YouTube</a></li>
+        </ul>
+
+        <ul class="footer-nav nav-list">
+            <li><a class="current-page" href="">About</a></li>
+            <li><a href="">Map</a></li>
+            <li><a href="">Zoos</a></li>
+            <li><a href="">Contact us</a></li>
+        </ul>
+
+        <form class="subscription" action="" method="post">
+            <label for="user-email">Subscribe to our news</label>
+            <input type="email" id="user-email" name="user-email" placeholder="Enter your email">
+            <button class="btn-submit" type="submit">submit</button>
         </form>
-    </div>
 
-    <div class="site-author">
-        <p>Designed by Alisa Samborskaya</p>
-        <p>&copy;RSSchool &amp;&nbsp;&copy;Yem Digital 2021</p>
-    </div>
-</footer>
+        <div class="site-designer">
+            <p>Designed by Alisa Samborskaya</p>
+            <p>&copy;RSSchool &amp;&nbsp;&copy;Yem Digital 2021</p>
+        </div>
+    </footer>
+</div>
 
 </html>
