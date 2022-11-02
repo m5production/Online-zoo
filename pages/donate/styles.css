@@ -1,3 +1,9 @@
+.content-wrapper {
+  max-width: 1160px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
 .main-btn {
   margin: 0;
   border: none;
@@ -37,14 +43,15 @@
   text-align: center;
   color: #FFFFFF;
 }
-.logo-text::after {
-  content: "";
-  background-image: url("../../assets/images/main/header/bamboo.svg");
+.logo .logo-bamboo {
   width: 13px;
   height: 21px;
   position: absolute;
   right: 58px;
   bottom: 8px;
+}
+.logo .logo-bamboo-color {
+  fill: white;
 }
 .logo:hover {
   background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
@@ -52,6 +59,9 @@
           background-clip: text;
   color: transparent;
   border-color: #F9804B;
+}
+.logo:hover .logo-bamboo-color {
+  fill: #F9804B;
 }
 
 .nav-list {
@@ -83,16 +93,17 @@
 }
 
 .header-wrapper {
+  position: absolute;
+  width: 100vw;
+  box-sizing: border-box;
   min-height: 80px;
-  padding-top: 14px;
+  padding: 14px 0;
   background-color: #000000;
 }
 .header-wrapper .main-title {
   display: none;
 }
 .header-wrapper .main-header {
-  max-width: 1160px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,11 +132,11 @@
 }
 
 .hero {
-  height: 390px;
+  height: 470px;
   background-image: url("../../assets/images/main/hero/Giant Panda.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top -80px left 0;
+  background-position: 0 35%;
 }
 
 .subtitle {
@@ -147,15 +158,14 @@ body {
 .donation-call-wrapper {
   background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
 }
-.donation-call-wrapper .content-wrapper {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 40px 0 180px;
+.donation-call-wrapper .donation-call-content {
+  padding-top: 40px;
+  padding-bottom: 180px;
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
-.donation-call-wrapper .content-wrapper .donation-call {
+.donation-call-wrapper .donation-call-content .donation-call {
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -163,7 +173,7 @@ body {
   color: #000000;
   color: white;
 }
-.donation-call-wrapper .content-wrapper .donation-call-heading {
+.donation-call-wrapper .donation-call-content .donation-call-heading {
   font-family: Roboto, Arial, sans-serif;
   font-size: 36px;
   font-weight: 400;
@@ -173,7 +183,7 @@ body {
   margin-bottom: 10px;
   text-align: center;
 }
-.donation-call-wrapper .content-wrapper .donation-info-heading {
+.donation-call-wrapper .donation-call-content .donation-info-heading {
   font-family: Roboto, Arial, sans-serif;
   font-size: 36px;
   font-weight: 400;
@@ -181,7 +191,7 @@ body {
   color: #333B41;
   color: #FE9013;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-wrapper {
+.donation-call-wrapper .donation-call-content .pick-and-feed-wrapper {
   max-width: 1160px;
   background: rgba(255, 255, 255, 0.52);
   -webkit-backdrop-filter: blur(2px);
@@ -189,12 +199,13 @@ body {
   border-radius: 20px;
   padding: 40px 0 60px;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed {
+.donation-call-wrapper .donation-call-content .pick-and-feed {
   display: flex;
+  padding: 0 7.93%;
   flex-direction: column;
   align-items: center;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-heading {
+.donation-call-wrapper .donation-call-content .pick-and-feed-heading {
   font-family: Roboto, Arial, sans-serif;
   font-size: 48px;
   font-weight: 400;
@@ -203,11 +214,11 @@ body {
   color: #FE9013;
   margin-bottom: 20px;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-subtitle {
+.donation-call-wrapper .donation-call-content .pick-and-feed-subtitle {
   margin-left: 92px;
   align-self: flex-start;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet {
   margin: 100px 0 8px;
   display: grid;
   gap: 11px;
@@ -215,7 +226,7 @@ body {
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas: "void   void    avatar avatar" "number multipl avatar avatar" "legend empty   avatar avatar" "legend empty   avatar avatar";
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet .number-of-animals {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet .number-of-animals {
   align-self: center;
   grid-area: number;
   font-family: "Roboto";
@@ -227,7 +238,7 @@ body {
   text-transform: uppercase;
   color: #000000;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet .diet-per-day {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet .diet-per-day {
   grid-area: legend;
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
@@ -235,34 +246,34 @@ body {
   line-height: 140%;
   color: #000000;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet .multiplication-sign {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet .multiplication-sign {
   grid-area: multipl;
   align-self: center;
   width: 14px;
   height: 14px;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet .multiplication-sign .bar {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet .multiplication-sign .bar {
   width: 19px;
   height: 2px;
   position: absolute;
   background-color: #333B41;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet .multiplication-sign .bar:first-of-type {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet .multiplication-sign .bar:first-of-type {
   transform: rotate(-45deg);
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet .multiplication-sign .bar:last-of-type {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet .multiplication-sign .bar:last-of-type {
   transform: rotate(45deg);
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-animal-diet .animal-avatar {
+.donation-call-wrapper .donation-call-content .pick-and-feed-animal-diet .animal-avatar {
   grid-area: avatar;
   position: relative;
   top: -40px;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale {
-  width: 976px;
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale {
+  width: 100%;
   margin-bottom: 50px;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-progress-bar {
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-progress-bar {
   margin: 17px 0 12px;
   align-self: stretch;
   background-color: #404950;
@@ -272,7 +283,7 @@ body {
   display: flex;
   align-items: center;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-progress-bar .donation-schale-line {
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-progress-bar .donation-schale-line {
   width: 100%;
   background-color: #72828E;
   height: 2px;
@@ -280,7 +291,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-progress-bar .donation-schale-line-sum {
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-progress-bar .donation-schale-line-sum {
   box-sizing: border-box;
   height: 10px;
   width: 10px;
@@ -291,24 +302,28 @@ body {
   position: relative;
   transition: 0.3s;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-progress-bar .donation-schale-line-sum:not(.chosen):hover {
-  cursor: pointer;
-  transform: scale(1.3);
-}
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-progress-bar .donation-schale-line-sum.chosen::before {
-  content: "";
-  width: 40px;
-  height: 40px;
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-progress-bar .donation-schale-line-sum::before {
   box-sizing: border-box;
-  border: 2px solid #FE9013;
-  outline-offset: -10px;
-  outline: 2px solid #FE9013;
-  border-radius: 50%;
+  content: "";
   position: absolute;
   top: -15px;
   left: -15px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 50%;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-sums {
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-progress-bar .donation-schale-line-sum:not(.chosen):hover {
+  cursor: pointer;
+  background-color: #FE9013;
+  transform: scale(1.3);
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-progress-bar .donation-schale-line-sum.chosen::before {
+  border: 2px solid #FE9013;
+  outline: 2px solid #FE9013;
+  outline-offset: -10px;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-sums {
   display: flex;
   justify-content: space-between;
   font-family: "Roboto";
@@ -318,42 +333,101 @@ body {
   line-height: 140%;
   text-transform: uppercase;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-sums .sum {
-  min-width: 60px;
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-sums .sum {
+  flex: 0 1 80px;
   text-align: center;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-donation-schale-sums .sum.chosen {
+.donation-call-wrapper .donation-call-content .pick-and-feed-donation-schale-sums .sum.chosen {
   color: #FE9013;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-user-donation-custom {
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom {
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-user-donation-custom-sum {
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom .custom-sum-wrapper {
+  max-width: 268px;
   align-self: center;
   padding: 0;
+  margin-bottom: 25px;
+  position: relative;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom .custom-sum-wrapper .custom-sum-currency-sign {
+  position: absolute;
+  right: 10px;
+  top: 28%;
+  background-color: transparent;
+  color: #929699;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-sum {
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  color: #333B41;
+  padding-left: 10px;
   border: 1px solid #929699;
   border-radius: 2px;
   background-color: transparent;
-  height: 54px;
-  width: 268px;
-  position: relative;
-  margin-bottom: 25px;
+  height: 2em;
 }
-.donation-call-wrapper .content-wrapper .pick-and-feed-user-donation-custom-frequency {
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-sum::-moz-placeholder {
+  position: relative;
+  top: -2px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #000000;
+  color: #929699;
+  text-transform: none;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-sum:-ms-input-placeholder {
+  position: relative;
+  top: -2px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #000000;
+  color: #929699;
+  text-transform: none;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-sum::placeholder {
+  position: relative;
+  top: -2px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #000000;
+  color: #929699;
+  text-transform: none;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-sum:focus {
+  outline: none;
+  border-color: #FE9013;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-frequency {
   margin-bottom: 31px;
   display: flex;
   justify-content: space-around;
 }
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-frequency .frequency-option {
+  background-color: transparent;
+}
+.donation-call-wrapper .donation-call-content .pick-and-feed-user-donation-custom-frequency .frequency-option:hover {
+  cursor: pointer;
+}
 
 .footer-wrapper {
-  padding: 41px 0 50px;
+  padding-top: 41px;
+  padding-bottom: 50px;
   background-color: #000000;
 }
-.footer-wrapper footer {
-  max-width: 1160px;
-  margin: 0 auto;
+.footer-wrapper .donate-footer {
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -364,22 +438,22 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
-.footer-wrapper footer .donate-for-volunteers {
+.footer-wrapper .donate-footer .donate-for-volunteers {
   border-radius: 5px;
   grid-row: 2;
 }
-.footer-wrapper footer .socials {
+.footer-wrapper .donate-footer .socials {
   grid-row: 3;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.footer-wrapper footer .socials a {
+.footer-wrapper .donate-footer .socials .social-link {
   display: flex;
   align-items: center;
   gap: 1em;
 }
-.footer-wrapper footer .socials a::before {
+.footer-wrapper .donate-footer .socials .social-link::before {
   content: "";
   width: 26px;
   height: 26px;
@@ -389,23 +463,29 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.footer-wrapper footer .socials .facebook::before {
+.footer-wrapper .donate-footer .socials .social-link:hover {
+  color: #FE9013;
+}
+.footer-wrapper .donate-footer .socials .social-link:hover::before {
+  background-color: #FE9013;
+}
+.footer-wrapper .donate-footer .socials .facebook::before {
   background-image: url("../../assets/images/footer/socials/facebook.svg");
 }
-.footer-wrapper footer .socials .twitter::before {
+.footer-wrapper .donate-footer .socials .twitter::before {
   background-image: url("../../assets/images/footer/socials/twitter.svg");
 }
-.footer-wrapper footer .socials .instagram::before {
+.footer-wrapper .donate-footer .socials .instagram::before {
   background-image: url("../../assets/images/footer/socials/instagram.svg");
 }
-.footer-wrapper footer .socials .youtube::before {
+.footer-wrapper .donate-footer .socials .youtube::before {
   background-image: url("../../assets/images/footer/socials/youtube.svg");
 }
-.footer-wrapper footer .footer-nav {
+.footer-wrapper .donate-footer .footer-nav {
   grid-row: 3;
   align-self: end;
 }
-.footer-wrapper footer .subscription {
+.footer-wrapper .donate-footer .subscription {
   grid-column: 3;
   font-family: Roboto, Arial, sans-serif;
   font-size: 24px;
@@ -420,56 +500,49 @@ body {
   -moz-column-gap: 10px;
        column-gap: 10px;
 }
-.footer-wrapper footer .subscription label {
+.footer-wrapper .donate-footer .subscription label {
   grid-column: span 2;
 }
-.footer-wrapper footer .subscription input {
+.footer-wrapper .donate-footer .subscription input {
   padding: 10px;
   background-color: #000000;
   border-width: 1px;
   border-radius: 2px;
-  border-color: #F9804B;
+  border-style: solid;
+  border-color: rgba(249, 128, 75, 0.5019607843);
   color: white;
 }
-.footer-wrapper footer .subscription input ::-moz-placeholder {
+.footer-wrapper .donate-footer .subscription input ::-moz-placeholder {
   color: #BDBDBD;
 }
-.footer-wrapper footer .subscription input :-ms-input-placeholder {
+.footer-wrapper .donate-footer .subscription input :-ms-input-placeholder {
   color: #BDBDBD;
 }
-.footer-wrapper footer .subscription input ::placeholder {
+.footer-wrapper .donate-footer .subscription input ::placeholder {
   color: #BDBDBD;
 }
-.footer-wrapper footer .subscription input:active {
+.footer-wrapper .donate-footer .subscription input:focus {
+  outline: none;
   border-color: #4B9200;
 }
-.footer-wrapper footer .subscription input:invalid {
+.footer-wrapper .donate-footer .subscription input:invalid {
+  outline: none;
   border-color: #D31414;
 }
-.footer-wrapper footer .subscription input:invalid input::-moz-placeholder {
-  color: #D31414;
-}
-.footer-wrapper footer .subscription input:invalid input:-ms-input-placeholder {
-  color: #D31414;
-}
-.footer-wrapper footer .subscription input:invalid input::placeholder {
-  color: #D31414;
-}
-.footer-wrapper footer .subscription .btn-submit {
+.footer-wrapper .donate-footer .subscription .btn-submit {
   text-transform: capitalize;
   background: #F1F3F2;
-  /* black_blue */
   border: 1px solid #F9804B;
   border-radius: 5px;
 }
-.footer-wrapper footer .subscription .btn-submit:hover {
+.footer-wrapper .donate-footer .subscription .btn-submit:hover {
   cursor: pointer;
 }
-.footer-wrapper footer .subscription .btn-submit:active {
+.footer-wrapper .donate-footer .subscription .btn-submit:active {
   color: #4B9200;
   border-color: #4B9200;
 }
-.footer-wrapper footer .site-designer {
+.footer-wrapper .donate-footer .site-designer {
   align-self: end;
   justify-self: end;
   grid-column: 3;

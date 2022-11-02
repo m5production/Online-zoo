@@ -2,6 +2,12 @@
 @import '../../assets/styles/logo.scss';
 @import '../../assets/styles/variables.scss';
 
+.content-wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
 .main-btn {
     margin: 0;
     border: none;
@@ -33,15 +39,16 @@
 
     @include logoPetStoryOnline;
 
-    &-text::after {
-        content: "";
-        background-image: url('../../assets/images/main/header/bamboo.svg');
-
+    .logo-bamboo {
         width: 13px;
         height: 21px;
         position: absolute;
         right: 58px;
         bottom: 8px;
+
+        &-color {
+            fill: white;
+        }
     }
 
     &:hover {
@@ -49,6 +56,10 @@
         background-clip: text;
         color: transparent;
         border-color: #F9804B;
+
+        .logo-bamboo-color {
+            fill: #F9804B;
+        }
     }
 }
 
@@ -79,41 +90,45 @@
 }
 
 .header-wrapper {
-    min-height: 80px;
-    padding-top: 14px;
+    position: absolute;
+    width: 100vw;
+    box-sizing: border-box;
+    min-height: $main-header-height;
+    padding: 14px 0;
     background-color: #000000;
+    z-index: 2;
 
-    .main-title {
-        display: none;
+}
+
+
+.main-title {
+    display: none;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        margin-right: 63px;
     }
 
-    .main-header {
-        max-width: 1160px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    nav {
+        min-width: 40%;
+    }
 
-        .logo {
-            margin-right: 63px;
-        }
+    .copyright {
+        margin-left: auto;
 
-        nav {
-            min-width: 40%;
-        }
+        a {
+            @include bodyBtnFont;
+            color: #FFFFFF;
 
-        .copyright {
-            margin-left: auto;
-
-            a {
-                @include bodyBtnFont;
-                color: #FFFFFF;
-
-                &:hover {
-                    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
-                    color: transparent;
-                    background-clip: text;
-                }
+            &:hover {
+                background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                color: transparent;
+                background-clip: text;
             }
         }
     }
@@ -122,35 +137,25 @@
 .hero-wrapper {
     background-image: url('../../assets/images/main/hero/Giant\ Panda.jpg');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: top -80px left 0;
 
-    .hero {
-        margin: 0 auto;
-        padding: 86px 0 100px 0;
-        max-width: 1160px;
 
-        .text-wrapper {
-            position: relative;
-            box-sizing: border-box;
-            max-width: 500px;
-            margin-left: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 60px;
+}
 
-            &::after {
-                content: "";
-                position: absolute;
-                width: 465px;
-                height: 465px;
-                background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
-                border-radius: 50%;
-                left: -73px;
-                top: -74px;
-            }
-        }
+.hero {
+    padding-top: 166px;
+    padding-bottom: 100px;
+
+    .text-wrapper {
+        position: relative;
+        box-sizing: border-box;
+        max-width: 500px;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
 
         p {
             @include h1Font;
@@ -160,137 +165,187 @@
             span {
                 color: #FFEE2E;
             }
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 93%;
+                padding-top: 93%;
+                background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                border-radius: 50%;
+                left: -14.8%;
+                top: -14.8%;
+                z-index: -1;
+            }
+        }
+
+
+    }
+}
+
+.about-outer-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.about {
+    padding-top: 140px;
+    padding-bottom: 180px;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+
+        .image-container-bamboo-hat {
+            overflow: hidden;
+            flex-shrink: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-text {
+            margin-left: 30px;
+            max-width: 465px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+
+            h2 {
+                @include h2Font;
+            }
+
+            h2+p {
+                line-height: 130%;
+            }
+
+            .subtitle {
+                @include subtitleFont;
+            }
+
+            p {
+                @include bodyFont;
+            }
+
+            &::after {
+                content: url('../../assets/images/main/about/flower_foto1.png');
+                position: absolute;
+                top: -128px;
+                right: -222px;
+            }
         }
     }
 }
 
 .decoration-wrapper {
-    background-image: url('../../assets/images/main/about/flower_foto1.png'),
-        url('../../assets/images/main/gallery/decorative/palm_foto.png'),
-        url('../../assets/images/main/gallery/decorative/strelitzia\ 1.png');
-    background-repeat: no-repeat,
-        no-repeat,
-        no-repeat;
-    background-position: right 0 top 12px,
-        left 0 bottom 0,
-        right 0 bottom 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    overflow: hidden;
 
-    .about {
-        max-width: 1160px;
-        padding: 140px 0 180px;
 
-        .content {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
+    .gallery-content-wrapper {
+        position: relative;
+        max-width: 1322px;
+        margin: 0 auto;
+        padding-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
 
-            img {
-                display: block;
-                object-fit: contain;
-            }
+        &::before {
+            content: url('../../assets/images/main/gallery/decorative/palm_foto.png');
+            position: absolute;
+            left: -141px;
+            bottom: -4px;
 
-            .about-text {
-                flex-basis: 465px;
-                background-color: white;
+        }
 
-                h2 {
-                    @include h2Font;
-                }
-
-                h2+p {
-                    @include bodyFont;
-                    line-height: 130%;
-                }
-
-                .subtitle {
-                    @include subtitleFont;
-                }
-
-                p {
-                    @include bodyFont;
-                }
-            }
+        &::after {
+            content: url('../../assets/images/main/gallery/decorative/strelitzia\ 1.png');
+            position: absolute;
+            right: -139px;
+            bottom: -4px;
         }
     }
 
-    .gallery {
-        max-width: 1160px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 80px;
-        padding: 100px;
+    .choose-favorite {
+        align-self: center;
+    }
+}
 
-        .cards-collection-container {
-            position: relative;
+.gallery {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 
-            .gallery-btn {
-                position: absolute;
-                top: 50%;
-                translate: 0 -50%;
+    .gallery-btn {
+        flex-shrink: 0;
+        width: 62px;
+        height: 62px;
+        border-color: transparent;
+        background-clip: content-box;
+        border-radius: 50%;
+        background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg'),
+            linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+        background-repeat: no-repeat;
+        background-position: center;
 
-                width: 62px;
-                height: 62px;
-                border-color: transparent;
-                background-clip: content-box;
-                border-radius: 50%;
-                background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg'),
-                    linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
-                background-repeat: no-repeat;
-                background-position: center;
-
-                &:hover {
-                    background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg');
-                    background-color: #E47209;
-                }
-            }
-
-            .prev {
-                left: -82px;
-            }
-
-            .next {
-                right: -82px;
-                transform: rotate(180deg);
-            }
+        &:hover {
+            background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg');
+            background-color: #E47209;
         }
+    }
+
+    .next {
+        transform: rotate(180deg);
+    }
+
+    .cards-collection-container {
+        display: grid;
 
         .animal-cards {
+            grid-column: 2/3;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            row-gap: 20px;
+            column-gap: 30px;
             margin: 0;
             padding: 0;
 
             .card {
-                width: 366px;
-                height: 366px;
+                flex: 0 1 366px;
                 border: 1px solid #FA6F32;
-                // border-image: linear-gradient(-45deg, #FA6F32 100%, #FE9013 100%) 1;
                 border-radius: 5px;
                 overflow: hidden;
+
                 display: flex;
                 flex-direction: column;
+                position: relative;
+                transition: all 0.3s;
 
                 img {
+                    width: 100%;
                     transition: transform 0.3s;
                 }
 
-                &:hover img {
-                    transform: scale(calc(376/366));
+                &:hover {
+                    background-color: rgba(13, 12, 13, 0.742);
+
+                    .card-text {
+                        color: white;
+                        transform: translateY(-250%);
+                    }
+
+                    img {
+                        transform: scale(calc(376/366));
+                        z-index: -1;
+                    }
                 }
 
                 .card-text {
-                    transition: translate 0.3s;
                     padding: 8px 0 14px 16px;
-                    background-color: rgba(13, 12, 13, 0.742);
-                    color: white;
-
-                    display: flex;
-                    flex-direction: column;
+                    transition: all 0.3s;
 
                     p:first-of-type {
                         @include bodyBtnFont;
@@ -302,156 +357,161 @@
                     }
                 }
 
+                .diet-pic {
+                    box-sizing: border-box;
+                    position: absolute;
+                    right: 12px;
+                    bottom: 12px;
+                    width: 9%;
+                    height: 8.6%;
+                    background-repeat: no-repeat;
+                    background-size: contain, contain;
+                    z-index: -1;
+                }
+
                 .vegy {
                     background-image: url('../../assets/images/main/gallery/decorative/diet-pics/banana.svg'),
                         url('../../assets/images/main/gallery/decorative/diet-pics/bamboo.svg');
-                    background-repeat: no-repeat;
-                    background-position: right 12px bottom 18px,
-                        right 18px bottom 13px;
+
+                    background-position: bottom 2px left 0, bottom 0 left 3px;
                 }
 
                 .meat-eater {
                     background-image: url('../../assets/images/main/gallery/decorative/diet-pics/fish.svg'),
                         url('../../assets/images/main/gallery/decorative/diet-pics/steak_icon.svg');
-                    background-repeat: no-repeat;
-                    background-position: right 8px bottom 14px,
-                        right 19px bottom 15px;
-                }
-
-                &:hover .card-text {
-                    translate: 0 -60px;
+                    width: 11.2%;
+                    height: 10.3%;
+                    background-position: bottom 2px right -3px, bottom 0 left -2px;
                 }
             }
         }
     }
+
 }
 
 .pick-and-feed-wrapper {
     background: $orange-gradient;
     opacity: 0.9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 70px 0 100px;
+    padding-top: 70px;
+    padding-bottom: 100px;
+}
 
-    .pick-and-feed-content-wrapper {
-        max-width: 1160px;
-        padding: 41px 0 59px;
-        background: rgba(253, 253, 255, 0.52);
-        backdrop-filter: blur(2px);
-        border-radius: 20px;
+.pick-and-feed-content-wrapper {
+    padding-top: 41px;
+    padding-bottom: 59px;
+    background: rgba(253, 253, 255, 0.52);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
 
-        .pick-and-feed-content {
-            width: 100%;
+    .pick-and-feed-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+
+        .pick-and-feed-text {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            h2 {
+                align-self: center;
+                @include h2Font;
+                color: #FE9013;
+            }
+
+            &>p {
+                margin-left: 8.5%;
+                @include bodyFont;
+                line-height: 130%;
+
+                color: #333B41;
+            }
+
+            p.subtitle {
+                @include subtitleFont;
+                margin-bottom: 10px;
+            }
+
+            .subtitle+p {
+                font-weight: 500;
+                margin-bottom: -20px;
+            }
+
+            .donate-ref {
+                border-bottom: 1px solid #FE9013;
+            }
+        }
+
+        .workflow {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 60px;
+            gap: 40px;
 
-            .pick-and-feed-text {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-
-                h2 {
-                    align-self: center;
-                    @include h2Font;
-                    color: #FE9013;
-                }
-
-                &>p {
-                    margin-left: 99px;
-                    @include bodyFont;
-                    line-height: 130%;
-
-                    color: #333B41;
-                }
-
-                p.subtitle {
-                    font-size: 24px;
-                    line-height: 120%;
-                    margin-bottom: 10px;
-                }
-
-                .subtitle+p {
-                    font-weight: 500;
-                    margin-bottom: -20px;
-                }
-
-                .donate-ref {
-                    border-bottom: 1px solid #FE9013;
-                }
+            h3 {
+                @include h3Font;
             }
 
-            .workflow {
+            .pay-to-feed-process {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 40px;
+                gap: 30px;
 
-                h3 {
-                    @include h3Font;
+                &::after {
+                    order: 4;
+                    margin-top: calc(168px/2 - 17px);
+                    content: url('../../assets/images/main/pay-to-feed/arrow.svg');
                 }
 
-                .pay-to-feed-process {
+                &::before {
+                    order: 2;
+                    margin-top: calc(168px/2 - 17px);
+                    content: url('../../assets/images/main/pay-to-feed/arrow.svg');
+                }
+
+                li {
+                    width: 168px;
                     display: flex;
+                    flex-direction: column;
                     gap: 30px;
 
-                    &::after {
-                        order: 4;
-                        margin-top: calc(168px/2 - 17px);
-                        content: url('../../assets/images/main/pay-to-feed/arrow.svg');
+                    &::before {
+                        content: "";
+                        height: 168px;
+                        border: 1px solid #F9804B;
+                        border-radius: 5px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-color: white;
                     }
+
+                    p {
+                        @include bodyFont;
+                    }
+                }
+
+                .stage1 {
+                    order: 1;
 
                     &::before {
-                        order: 2;
-                        margin-top: calc(168px/2 - 17px);
-                        content: url('../../assets/images/main/pay-to-feed/arrow.svg');
+                        background-image: url('../../assets/images/main/pay-to-feed/pay-card.svg');
                     }
+                }
 
-                    li {
-                        width: 168px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 30px;
+                .stage2 {
+                    order: 3;
 
-                        &::before {
-                            content: "";
-                            height: 168px;
-                            border: 1px solid #F9804B;
-                            border-radius: 5px;
-                            background-repeat: no-repeat;
-                            background-position: center;
-                            background-color: white;
-                        }
-
-                        p {
-                            @include bodyFont;
-                        }
+                    &::before {
+                        background-image: url('../../assets/images/main/pay-to-feed/money-to-grow.svg');
                     }
+                }
 
-                    .stage1 {
-                        order: 1;
+                .stage3 {
+                    order: 5;
 
-                        &::before {
-                            background-image: url('../../assets/images/main/pay-to-feed/pay-card.svg');
-                        }
-                    }
-
-                    .stage2 {
-                        order: 3;
-
-                        &::before {
-                            background-image: url('../../assets/images/main/pay-to-feed/money-to-grow.svg');
-                        }
-                    }
-
-                    .stage3 {
-                        order: 5;
-
-                        &::before {
-                            background-image: url('../../assets/images/main/pay-to-feed/feed-pet.svg');
-                        }
+                    &::before {
+                        background-image: url('../../assets/images/main/pay-to-feed/feed-pet.svg');
                     }
                 }
             }
@@ -460,89 +520,112 @@
 }
 
 .feedback-wrapper {
-    width: 100%;
-    padding: 140px 0 204px;
-    background-image: url('../../assets/images/main/feedback/leaf_foto.png');
-    background-repeat: no-repeat;
-    background-origin: border-box;
-    background-position: bottom -130px right 0;
+    position: relative;
+    overflow: hidden;
+    padding-top: 140px;
+    padding-bottom: 204px;
+}
 
-    .feedback {
-        max-width: 1160px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+.feedback-section {
+    position: relative;
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        h3 {
-            @include h3Font;
-            margin-bottom: 47px;
-        }
+    h3 {
+        @include h3Font;
+        margin-bottom: 47px;
+    }
 
-        .feedback-track-container {
-            width: 100%;
-            margin-bottom: 21px;
+    .feedback-track-container {
+        width: 100%;
+        overflow-x: scroll;
+        padding-bottom: 21px;
+        margin-bottom: 31px;
 
-            .feedback-track {
-                display: flex;
-                gap: 30px;
+        .feedback-track {
+            display: flex;
+            gap: 30px;
 
-                article {
-                    width: 268px;
-                    height: 391px;
-                    padding: 15px 15px 19px;
-                    background-color: #F1F3F2;
-                    border: 2px solid;
-                    border-color: rgb(254, 189, 171);
-                    border-radius: 20px;
-                    display: grid;
-                    gap: 10px;
-                    grid-template-columns: 37px 1fr;
+            article {
+                flex: 0 0 20%;
+                scroll-behavior: smooth;
+                height: 391px;
+                padding: 15px 15px 19px;
+                background-color: #F1F3F2;
+                border: 2px solid;
+                border-color: rgb(254, 189, 171);
+                border-radius: 20px;
+                display: grid;
+                gap: 10px;
+                grid-template-columns: 37px 1fr;
 
-                    .user-data {
-                        h1 {
-                            @include bodyFont;
-                            line-height: 120%;
-                        }
-
-                        .location-time {
-                            @include smallParagraphFont;
-                            color: #BDBDBD;
-                        }
+                .user-data {
+                    h1 {
+                        @include bodyFont;
+                        line-height: 120%;
                     }
 
-                    .feedback-text {
-                        grid-column: span 2;
-                        overflow: hidden;
+                    .location-time {
+                        @include smallParagraphFont;
+                        color: #BDBDBD;
                     }
+                }
+
+                .feedback-text {
+                    grid-column: span 2;
+                    overflow: hidden;
                 }
             }
         }
 
-        .scroll-bar {
-            width: 600px;
+        &::-webkit-scrollbar {
+            width: 50%;
             height: 8px;
-            margin-bottom: 31px;
-            border: 1px solid;
-            border-color: rgb(254, 189, 171);
-            border-radius: 5px;
-            background-color: #F1F3F2;
+
+            &-track {
+                background: #F5F7F6;
+                border: 1px solid rgb(254, 189, 171);
+                border-radius: 5px;
+            }
+
+            &-thumb {
+                background: #FE9013;
+                border-radius: 5px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
-        .leave-feedback {
-            align-self: flex-start;
-            border-radius: 5px;
-        }
+        //полоса прокрутки в firefox
+
+        scrollbar-width: thin;
+        scrollbar-color: #FE9013 #F5F7F6;
+    }
+
+    .leave-feedback {
+        align-self: flex-start;
+        border-radius: 5px;
+    }
+
+    &::after {
+        content: url('../../assets/images/main/feedback/leaf_foto.png');
+        position: absolute;
+        bottom: -340px;
+        right: -210px;
     }
 }
 
 .footer-wrapper {
-    padding: 41px 0 50px;
+    padding-top: 41px;
+    padding-bottom: 50px;
     background-color: #000000;
 
-    footer {
-        max-width: 1160px;
-        margin: 0 auto;
+    .donate-footer {
         @include bodyFont;
         color: white;
         display: grid;
@@ -560,7 +643,7 @@
             flex-direction: column;
             gap: 10px;
 
-            a {
+            .social-link {
                 display: flex;
                 align-items: center;
                 gap: 1em;
@@ -574,6 +657,14 @@
                     background-color: rgba(196, 196, 196, 0.5);
                     background-repeat: no-repeat;
                     background-position: center;
+                }
+
+                &:hover {
+                    color: $orange;
+
+                    &::before {
+                        background-color: $orange;
+                    }
                 }
             }
 
@@ -618,30 +709,28 @@
                 background-color: #000000;
                 border-width: 1px;
                 border-radius: 2px;
-                border-color: #F9804B;
+                border-style: solid;
+                border-color: #F9804B80;
                 color: white;
 
                 ::placeholder {
                     color: #BDBDBD;
                 }
 
-                &:active {
+                &:focus {
+                    outline: none;
                     border-color: $activeColor;
                 }
 
                 &:invalid {
+                    outline: none;
                     border-color: $mistakeColor;
-
-                    input::placeholder {
-                        color: $mistakeColor;
-                    }
                 }
             }
 
             .btn-submit {
                 text-transform: capitalize;
                 background: #F1F3F2;
-                /* black_blue */
 
                 border: 1px solid #F9804B;
                 border-radius: 5px;
@@ -666,5 +755,43 @@
             font-weight: 100;
             color: rgba(255, 255, 255, 0.4);
         }
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .about .content .about-text {
+        position: static;
+
+        &::after {
+            top: 12px;
+            right: 0;
+        }
+    }
+
+    .decoration-wrapper .gallery-content-wrapper {
+        position: static;
+
+        &::before {
+            left: 0;
+        }
+
+        &::after {
+            right: 0;
+        }
+    }
+
+    .feedback-section {
+        position: static;
+
+        &::after {
+            bottom: -136px;
+            right: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .about-outer-wrapper::after {
+        display: none;
     }
 }
