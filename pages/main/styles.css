@@ -146,7 +146,6 @@
   padding-bottom: 100px;
 }
 .hero .text-wrapper {
-  position: relative;
   box-sizing: border-box;
   max-width: 500px;
   margin-left: auto;
@@ -156,6 +155,7 @@
   gap: 60px;
 }
 .hero .text-wrapper p {
+  position: relative;
   font-family: Roboto, Arial, sans-serif;
   font-size: 106px;
   font-weight: 700;
@@ -176,7 +176,7 @@
   background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
   border-radius: 50%;
   left: -14.8%;
-  top: -14.8%;
+  top: -18.8%;
   z-index: -1;
 }
 
@@ -243,7 +243,10 @@
   position: relative;
   overflow: hidden;
 }
-.decoration-wrapper .gallery-content-wrapper {
+
+.gallery-content-wrapper {
+  padding-left: 10px;
+  padding-right: 10px;
   position: relative;
   max-width: 1322px;
   margin: 0 auto;
@@ -252,24 +255,20 @@
   flex-direction: column;
   gap: 80px;
 }
-.decoration-wrapper .gallery-content-wrapper::before {
+.gallery-content-wrapper::before {
   content: url("../../assets/images/main/gallery/decorative/palm_foto.png");
   position: absolute;
   left: -141px;
   bottom: -4px;
 }
-.decoration-wrapper .gallery-content-wrapper::after {
+.gallery-content-wrapper::after {
   content: url("../../assets/images/main/gallery/decorative/strelitzia 1.png");
   position: absolute;
   right: -139px;
   bottom: -4px;
 }
-.decoration-wrapper .choose-favorite {
-  align-self: center;
-}
 
 .gallery {
-  width: 100%;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -367,6 +366,10 @@
   width: 11.2%;
   height: 10.3%;
   background-position: bottom 2px right -3px, bottom 0 left -2px;
+}
+
+.choose-favorite {
+  align-self: center;
 }
 
 .pick-and-feed-wrapper {
@@ -507,8 +510,6 @@
 
 .feedback-section {
   position: relative;
-  max-width: 1160px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -530,12 +531,12 @@
   scrollbar-color: #FE9013 #F5F7F6;
 }
 .feedback-section .feedback-track-container .feedback-track {
+  width: 100%;
   display: flex;
   gap: 30px;
 }
 .feedback-section .feedback-track-container .feedback-track article {
-  flex: 0 0 20%;
-  scroll-behavior: smooth;
+  flex: 0 0 19.5%;
   height: 391px;
   padding: 15px 15px 19px;
   background-color: #F1F3F2;
@@ -597,7 +598,7 @@
   padding-bottom: 50px;
   background-color: #000000;
 }
-.footer-wrapper .donate-footer {
+.footer-wrapper .page-footer {
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -605,25 +606,25 @@
   color: #000000;
   color: white;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
   gap: 30px;
 }
-.footer-wrapper .donate-footer .donate-for-volunteers {
+.footer-wrapper .page-footer .donate-for-volunteers {
   border-radius: 5px;
   grid-row: 2;
 }
-.footer-wrapper .donate-footer .socials {
+.footer-wrapper .page-footer .socials {
   grid-row: 3;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.footer-wrapper .donate-footer .socials .social-link {
+.footer-wrapper .page-footer .socials .social-link {
   display: flex;
   align-items: center;
   gap: 1em;
 }
-.footer-wrapper .donate-footer .socials .social-link::before {
+.footer-wrapper .page-footer .socials .social-link::before {
   content: "";
   width: 26px;
   height: 26px;
@@ -633,30 +634,31 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.footer-wrapper .donate-footer .socials .social-link:hover {
+.footer-wrapper .page-footer .socials .social-link:hover {
   color: #FE9013;
 }
-.footer-wrapper .donate-footer .socials .social-link:hover::before {
+.footer-wrapper .page-footer .socials .social-link:hover::before {
   background-color: #FE9013;
 }
-.footer-wrapper .donate-footer .socials .facebook::before {
+.footer-wrapper .page-footer .socials .facebook::before {
   background-image: url("../../assets/images/footer/socials/facebook.svg");
 }
-.footer-wrapper .donate-footer .socials .twitter::before {
+.footer-wrapper .page-footer .socials .twitter::before {
   background-image: url("../../assets/images/footer/socials/twitter.svg");
 }
-.footer-wrapper .donate-footer .socials .instagram::before {
+.footer-wrapper .page-footer .socials .instagram::before {
   background-image: url("../../assets/images/footer/socials/instagram.svg");
 }
-.footer-wrapper .donate-footer .socials .youtube::before {
+.footer-wrapper .page-footer .socials .youtube::before {
   background-image: url("../../assets/images/footer/socials/youtube.svg");
 }
-.footer-wrapper .donate-footer .footer-nav {
+.footer-wrapper .page-footer .footer-nav {
+  grid-column: 2;
   grid-row: 3;
   align-self: end;
 }
-.footer-wrapper .donate-footer .subscription {
-  grid-column: 3;
+.footer-wrapper .page-footer .subscription {
+  grid-column: 3/span 2;
   font-family: Roboto, Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -670,10 +672,10 @@
   -moz-column-gap: 10px;
        column-gap: 10px;
 }
-.footer-wrapper .donate-footer .subscription label {
+.footer-wrapper .page-footer .subscription label {
   grid-column: span 2;
 }
-.footer-wrapper .donate-footer .subscription input {
+.footer-wrapper .page-footer .subscription input {
   padding: 10px;
   background-color: #000000;
   border-width: 1px;
@@ -682,41 +684,44 @@
   border-color: rgba(249, 128, 75, 0.5019607843);
   color: white;
 }
-.footer-wrapper .donate-footer .subscription input ::-moz-placeholder {
+.footer-wrapper .page-footer .subscription input ::-moz-placeholder {
   color: #BDBDBD;
 }
-.footer-wrapper .donate-footer .subscription input :-ms-input-placeholder {
+.footer-wrapper .page-footer .subscription input :-ms-input-placeholder {
   color: #BDBDBD;
 }
-.footer-wrapper .donate-footer .subscription input ::placeholder {
+.footer-wrapper .page-footer .subscription input ::placeholder {
   color: #BDBDBD;
 }
-.footer-wrapper .donate-footer .subscription input:focus {
+.footer-wrapper .page-footer .subscription input:focus {
   outline: none;
   border-color: #4B9200;
 }
-.footer-wrapper .donate-footer .subscription input:invalid {
+.footer-wrapper .page-footer .subscription input:invalid {
   outline: none;
   border-color: #D31414;
 }
-.footer-wrapper .donate-footer .subscription .btn-submit {
+.footer-wrapper .page-footer .subscription .btn-submit {
   text-transform: capitalize;
   background: #F1F3F2;
   border: 1px solid #F9804B;
   border-radius: 5px;
 }
-.footer-wrapper .donate-footer .subscription .btn-submit:hover {
+.footer-wrapper .page-footer .subscription .btn-submit:hover {
   cursor: pointer;
 }
-.footer-wrapper .donate-footer .subscription .btn-submit:active {
+.footer-wrapper .page-footer .subscription .btn-submit:active {
   color: #4B9200;
   border-color: #4B9200;
 }
-.footer-wrapper .donate-footer .site-designer {
+.footer-wrapper .page-footer .site-designer {
   align-self: end;
   justify-self: end;
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 3;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   font-weight: 100;
   color: rgba(255, 255, 255, 0.4);
 }
@@ -729,13 +734,13 @@
     top: 12px;
     right: 0;
   }
-  .decoration-wrapper .gallery-content-wrapper {
+  .gallery-content-wrapper {
     position: static;
   }
-  .decoration-wrapper .gallery-content-wrapper::before {
+  .gallery-content-wrapper::before {
     left: 0;
   }
-  .decoration-wrapper .gallery-content-wrapper::after {
+  .gallery-content-wrapper::after {
     right: 0;
   }
   .feedback-section {
@@ -747,7 +752,87 @@
   }
 }
 @media only screen and (max-width: 1000px) {
-  .about-outer-wrapper::after {
+  .content-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .hero {
+    padding-top: 122px;
+    padding-bottom: 47px;
+  }
+  .hero .text-wrapper {
+    max-width: 400px;
+  }
+  .hero .text-wrapper p {
+    font-size: 85px;
+  }
+  .about {
+    padding-top: 100px;
+    padding-bottom: 142px;
+  }
+  .about .content .about-text::after {
     display: none;
+  }
+  .gallery-content-wrapper {
+    max-width: 940px;
+    padding-bottom: 140px;
+  }
+  .gallery-content-wrapper::before {
+    content: url("../../assets/images/main/gallery/decorative/palm_foto_small_PC.png");
+    left: -31px;
+    bottom: -4px;
+  }
+  .gallery-content-wrapper::after {
+    content: url("../../assets/images/main/gallery/decorative/strelitzia_1_small_PC.png");
+    right: -31px;
+    bottom: -4px;
+  }
+  .pick-and-feed-wrapper {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+  .gallery-content-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .gallery {
+    position: relative;
+  }
+  .gallery .gallery-btn {
+    position: absolute;
+  }
+  .gallery .gallery-btn:hover {
+    background-image: url("../../assets/images/main/gallery/decorative/arrow_left.svg");
+    background-color: #E47209;
+  }
+  .gallery .prev {
+    left: 323px;
+  }
+  .gallery .next {
+    right: 323px;
+  }
+  .gallery .cards-collection-container .animal-cards {
+    row-gap: 92px;
+  }
+  .gallery .cards-collection-container .animal-cards .card {
+    flex-basis: 294px;
+  }
+  .feedback-wrapper {
+    padding-top: 100px;
+    padding-bottom: 140px;
+  }
+  .feedback-section h3 {
+    margin-bottom: 30px;
+  }
+  .feedback-section .feedback-track-container .feedback-track article {
+    flex-basis: 27.4%;
+  }
+  .footer-wrapper .page-footer {
+    -moz-column-gap: 0;
+         column-gap: 0;
+  }
+  .footer-wrapper .page-footer .footer-nav {
+    grid-column: 2/span 2;
+    margin-right: 18%;
   }
 }/*# sourceMappingURL=styles.css.map */

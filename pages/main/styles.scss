@@ -100,7 +100,6 @@
 
 }
 
-
 .main-title {
     display: none;
 }
@@ -139,8 +138,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-
 }
 
 .hero {
@@ -148,7 +145,6 @@
     padding-bottom: 100px;
 
     .text-wrapper {
-        position: relative;
         box-sizing: border-box;
         max-width: 500px;
         margin-left: auto;
@@ -158,6 +154,7 @@
         gap: 60px;
 
         p {
+            position: relative;
             @include h1Font;
             text-align: center;
             z-index: 1;
@@ -174,12 +171,10 @@
                 background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
                 border-radius: 50%;
                 left: -14.8%;
-                top: -14.8%;
+                top: -18.8%;
                 z-index: -1;
             }
         }
-
-
     }
 }
 
@@ -241,40 +236,35 @@
 .decoration-wrapper {
     position: relative;
     overflow: hidden;
+}
 
+.gallery-content-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    max-width: 1322px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
 
-    .gallery-content-wrapper {
-        position: relative;
-        max-width: 1322px;
-        margin: 0 auto;
-        padding-bottom: 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 80px;
-
-        &::before {
-            content: url('../../assets/images/main/gallery/decorative/palm_foto.png');
-            position: absolute;
-            left: -141px;
-            bottom: -4px;
-
-        }
-
-        &::after {
-            content: url('../../assets/images/main/gallery/decorative/strelitzia\ 1.png');
-            position: absolute;
-            right: -139px;
-            bottom: -4px;
-        }
+    &::before {
+        content: url('../../assets/images/main/gallery/decorative/palm_foto.png');
+        position: absolute;
+        left: -141px;
+        bottom: -4px;
     }
 
-    .choose-favorite {
-        align-self: center;
+    &::after {
+        content: url('../../assets/images/main/gallery/decorative/strelitzia\ 1.png');
+        position: absolute;
+        right: -139px;
+        bottom: -4px;
     }
 }
 
 .gallery {
-    width: 100%;
     display: flex;
     gap: 20px;
     align-items: center;
@@ -387,6 +377,10 @@
         }
     }
 
+}
+
+.choose-favorite {
+    align-self: center;
 }
 
 .pick-and-feed-wrapper {
@@ -528,8 +522,6 @@
 
 .feedback-section {
     position: relative;
-    max-width: 1160px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -546,12 +538,12 @@
         margin-bottom: 31px;
 
         .feedback-track {
+            width: 100%;
             display: flex;
             gap: 30px;
 
             article {
-                flex: 0 0 20%;
-                scroll-behavior: smooth;
+                flex: 0 0 19.5%;
                 height: 391px;
                 padding: 15px 15px 19px;
                 background-color: #F1F3F2;
@@ -625,11 +617,11 @@
     padding-bottom: 50px;
     background-color: #000000;
 
-    .donate-footer {
+    .page-footer {
         @include bodyFont;
         color: white;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
         gap: 30px;
 
         .donate-for-volunteers {
@@ -686,12 +678,13 @@
         }
 
         .footer-nav {
+            grid-column: 2;
             grid-row: 3;
             align-self: end;
         }
 
         .subscription {
-            grid-column: 3;
+            grid-column: 3/span 2;
             @include subtitleFont;
             color: white;
             display: grid;
@@ -749,8 +742,9 @@
         .site-designer {
             align-self: end;
             justify-self: end;
-            grid-column: 3;
+            grid-column: 4;
             grid-row: 3;
+            width: max-content;
 
             font-weight: 100;
             color: rgba(255, 255, 255, 0.4);
@@ -768,7 +762,7 @@
         }
     }
 
-    .decoration-wrapper .gallery-content-wrapper {
+    .gallery-content-wrapper {
         position: static;
 
         &::before {
@@ -791,7 +785,114 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .about-outer-wrapper::after {
-        display: none;
+    .content-wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .hero {
+        padding-top: 122px;
+        padding-bottom: 47px;
+
+        .text-wrapper {
+            max-width: 400px;
+
+            p {
+                font-size: 85px;
+            }
+        }
+    }
+
+    .about {
+        padding-top: 100px;
+        padding-bottom: 142px;
+
+        .content .about-text::after {
+            display: none;
+        }
+    }
+
+    .gallery-content-wrapper {
+        max-width: 940px;
+        padding-bottom: 140px;
+
+        &::before {
+            content: url('../../assets/images/main/gallery/decorative/palm_foto_small_PC.png');
+            left: -31px;
+            bottom: -4px;
+        }
+
+        &::after {
+            content: url('../../assets/images/main/gallery/decorative/strelitzia_1_small_PC.png');
+            right: -31px;
+            bottom: -4px;
+        }
+    }
+
+    .pick-and-feed-wrapper {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .gallery-content-wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .gallery {
+        position: relative;
+
+        .gallery-btn {
+            position: absolute;
+
+            &:hover {
+                background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg');
+                background-color: #E47209;
+            }
+        }
+
+        .prev {
+            left: 323px;
+        }
+
+        .next {
+            right: 323px;
+        }
+
+        .cards-collection-container {
+
+            .animal-cards {
+                row-gap: 92px;
+
+                .card {
+                    flex-basis: 294px;
+                }
+            }
+        }
+    }
+
+    .feedback-wrapper {
+        padding-top: 100px;
+        padding-bottom: 140px;
+    }
+
+    .feedback-section {
+
+        h3 {
+            margin-bottom: 30px;
+        }
+
+        .feedback-track-container .feedback-track article {
+            flex-basis: 27.4%;
+        }
+    }
+
+    .footer-wrapper .page-footer {
+        column-gap: 0;
+        
+        .footer-nav {
+            grid-column: 2/span 2;
+            margin-right: 18%;
+        }
     }
 }
