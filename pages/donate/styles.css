@@ -94,7 +94,7 @@
 
 .header-wrapper {
   position: absolute;
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
   min-height: 80px;
   padding: 14px 0;

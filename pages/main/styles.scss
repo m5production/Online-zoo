@@ -2,6 +2,8 @@
 @import '../../assets/styles/logo.scss';
 @import '../../assets/styles/variables.scss';
 
+//========================GENERAL===================
+
 .content-wrapper {
     max-width: 1160px;
     margin: 0 auto;
@@ -40,8 +42,6 @@
     @include logoPetStoryOnline;
 
     .logo-bamboo {
-        width: 13px;
-        height: 21px;
         position: absolute;
         right: 58px;
         bottom: 8px;
@@ -86,25 +86,71 @@
     a:not(.current-page):hover {
         color: #F9804B;
     }
-
 }
+
+.burger {
+    display: none;
+    position: relative;
+    flex: 0 0 18px;
+    height: 10px;
+    background-color: transparent;
+
+    span {
+        position: absolute;
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: white;
+        transition: transform 0.3s;
+
+    }
+
+    span:first-child {
+        top: 4px;
+    }
+
+    span:last-child {
+        bottom: 0;
+    }
+
+    &.active {
+
+        & span {
+            background-color: #333B41;
+            top: 50%;
+        }
+
+        & span:first-child {
+            transform: rotate(45deg);
+        }
+
+        & span:last-child {
+            transform: rotate(-45deg);
+        }
+
+        & span:nth-of-type(2) {
+            display: none;
+        }
+    }
+}
+
+//========================HEADER===================
 
 .header-wrapper {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     min-height: $main-header-height;
     padding: 14px 0;
     background-color: #000000;
     z-index: 2;
-
 }
 
 .main-title {
     display: none;
 }
 
-.main-header {
+.large-screen-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -132,6 +178,12 @@
         }
     }
 }
+
+.small-screen-header {
+    display: none;
+}
+
+//========================HERO===================
 
 .hero-wrapper {
     background-image: url('../../assets/images/main/hero/Giant\ Panda.jpg');
@@ -178,6 +230,8 @@
     }
 }
 
+//========================ABOUT===================
+
 .about-outer-wrapper {
     width: 100%;
     overflow: hidden;
@@ -191,47 +245,49 @@
     .content {
         display: flex;
         justify-content: space-between;
-
-        .image-container-bamboo-hat {
-            overflow: hidden;
-            flex-shrink: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .about-text {
-            margin-left: 30px;
-            max-width: 465px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-
-            h2 {
-                @include h2Font;
-            }
-
-            h2+p {
-                line-height: 130%;
-            }
-
-            .subtitle {
-                @include subtitleFont;
-            }
-
-            p {
-                @include bodyFont;
-            }
-
-            &::after {
-                content: url('../../assets/images/main/about/flower_foto1.png');
-                position: absolute;
-                top: -128px;
-                right: -222px;
-            }
-        }
     }
 }
+
+.image-container-bamboo-hat {
+    overflow: hidden;
+    flex-shrink: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-text {
+    margin-left: 30px;
+    max-width: 465px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    h2 {
+        @include h2Font;
+    }
+
+    h2+p {
+        line-height: 130%;
+    }
+
+    .subtitle {
+        @include subtitleFont;
+    }
+
+    p {
+        @include bodyFont;
+    }
+
+    &::after {
+        content: url('../../assets/images/main/about/flower_foto1.png');
+        position: absolute;
+        top: -128px;
+        right: -222px;
+    }
+}
+
+//========================GALLERY===================
 
 .decoration-wrapper {
     position: relative;
@@ -290,98 +346,95 @@
     .next {
         transform: rotate(180deg);
     }
+}
 
-    .cards-collection-container {
-        display: grid;
+.animal-cards {
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+    column-gap: 30px;
+    margin: 0;
+    padding: 0;
 
-        .animal-cards {
-            grid-column: 2/3;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            row-gap: 20px;
-            column-gap: 30px;
-            margin: 0;
-            padding: 0;
+    .card {
+        flex: 0 1 366px;
+        border: 1px solid #FA6F32;
+        border-radius: 5px;
+        overflow: hidden;
 
-            .card {
-                flex: 0 1 366px;
-                border: 1px solid #FA6F32;
-                border-radius: 5px;
-                overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: all 0.3s;
 
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                transition: all 0.3s;
+        img {
+            width: 100%;
+            transition: transform 0.3s;
+        }
 
-                img {
-                    width: 100%;
-                    transition: transform 0.3s;
-                }
+        &:hover {
+            background-color: rgba(13, 12, 13, 0.742);
 
-                &:hover {
-                    background-color: rgba(13, 12, 13, 0.742);
+            .card-text {
+                color: white;
+                transform: translateY(-100%);
+            }
 
-                    .card-text {
-                        color: white;
-                        transform: translateY(-250%);
-                    }
-
-                    img {
-                        transform: scale(calc(376/366));
-                        z-index: -1;
-                    }
-                }
-
-                .card-text {
-                    padding: 8px 0 14px 16px;
-                    transition: all 0.3s;
-
-                    p:first-of-type {
-                        @include bodyBtnFont;
-                        text-transform: uppercase;
-                    }
-
-                    p+p {
-                        @include smallParagraphFont;
-                    }
-                }
-
-                .diet-pic {
-                    box-sizing: border-box;
-                    position: absolute;
-                    right: 12px;
-                    bottom: 12px;
-                    width: 9%;
-                    height: 8.6%;
-                    background-repeat: no-repeat;
-                    background-size: contain, contain;
-                    z-index: -1;
-                }
-
-                .vegy {
-                    background-image: url('../../assets/images/main/gallery/decorative/diet-pics/banana.svg'),
-                        url('../../assets/images/main/gallery/decorative/diet-pics/bamboo.svg');
-
-                    background-position: bottom 2px left 0, bottom 0 left 3px;
-                }
-
-                .meat-eater {
-                    background-image: url('../../assets/images/main/gallery/decorative/diet-pics/fish.svg'),
-                        url('../../assets/images/main/gallery/decorative/diet-pics/steak_icon.svg');
-                    width: 11.2%;
-                    height: 10.3%;
-                    background-position: bottom 2px right -3px, bottom 0 left -2px;
-                }
+            img {
+                transform: scale(calc(376/366));
+                z-index: -1;
             }
         }
-    }
 
+        .card-text {
+            padding: 8px 33px 14px 16px;
+            transition: all 0.3s;
+
+            p:first-of-type {
+                @include bodyBtnFont;
+                text-transform: uppercase;
+            }
+
+            p+p {
+                @include smallParagraphFont;
+            }
+        }
+
+        .diet-pic {
+            box-sizing: border-box;
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            width: 9%;
+            height: 8.6%;
+            background-repeat: no-repeat;
+            background-size: contain, contain;
+            z-index: -1;
+        }
+
+        .vegy {
+            background-image: url('../../assets/images/main/gallery/decorative/diet-pics/banana.svg'),
+                url('../../assets/images/main/gallery/decorative/diet-pics/bamboo.svg');
+
+            background-position: bottom 2px left 0, bottom 0 left 3px;
+        }
+
+        .meat-eater {
+            background-image: url('../../assets/images/main/gallery/decorative/diet-pics/fish.svg'),
+                url('../../assets/images/main/gallery/decorative/diet-pics/steak_icon.svg');
+            width: 11.2%;
+            height: 10.3%;
+            background-position: bottom 2px right -3px, bottom 0 left -2px;
+        }
+    }
 }
 
 .choose-favorite {
     align-self: center;
 }
+
+//========================PICK-AND-FEED===================
 
 .pick-and-feed-wrapper {
     background: $orange-gradient;
@@ -399,119 +452,131 @@
 
     .pick-and-feed-content {
         width: 100%;
+    }
+}
+
+.pick-and-feed-content-wrapper>h2 {
+    padding-bottom: 30px;
+    text-align: center;
+    @include h2Font;
+    color: #FE9013;
+}
+
+.pick-and-feed-text {
+    padding-left: 8.6%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &>p {
+        @include bodyFont;
+        line-height: 130%;
+
+        color: #333B41;
+    }
+
+    p.subtitle {
+        @include subtitleFont;
+        margin-bottom: 10px;
+    }
+
+    .subtitle+p {
+        font-weight: 500;
+        margin-bottom: -20px;
+    }
+
+    .donate-ref {
+        border-bottom: 1px solid #FE9013;
+    }
+}
+
+.workflow {
+    margin-top: 100px;
+
+    h3 {
+        width: fit-content;
+        @include h3Font;
+        margin: 0 auto 40px;
+    }
+}
+
+.pay-to-feed-process {
+    margin: 0 auto;
+    margin-bottom: 60px;
+    max-width: 764px;
+
+    &-figures {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 60px;
+        justify-content: space-between;
 
-        .pick-and-feed-text {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+        & li {
+            flex: 0 1 168px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid $orange;
 
-            h2 {
-                align-self: center;
-                @include h2Font;
-                color: #FE9013;
+            & :first-child {
+                padding-top: 100%;
+                margin: 0 auto;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
             }
 
-            &>p {
-                margin-left: 8.5%;
-                @include bodyFont;
-                line-height: 130%;
-
-                color: #333B41;
+            &:first-of-type {
+                order: -1;
             }
 
-            p.subtitle {
-                @include subtitleFont;
-                margin-bottom: 10px;
-            }
-
-            .subtitle+p {
-                font-weight: 500;
-                margin-bottom: -20px;
-            }
-
-            .donate-ref {
-                border-bottom: 1px solid #FE9013;
+            &:last-of-type {
+                order: 1;
             }
         }
 
-        .workflow {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
+        .stage1-img {
+            width: 64%;
+            background-image: url('../../assets/images/main/pay-to-feed/pay-card.svg');
+        }
 
-            h3 {
-                @include h3Font;
-            }
+        .stage2-img {
+            width: 50%;
+            background-image: url('../../assets/images/main/pay-to-feed/money-to-grow.svg');
+        }
 
-            .pay-to-feed-process {
-                display: flex;
-                gap: 30px;
+        .stage3-img {
+            width: 73%;
+            background-image: url('../../assets/images/main/pay-to-feed/feed-pet.svg');
+        }
 
-                &::after {
-                    order: 4;
-                    margin-top: calc(168px/2 - 17px);
-                    content: url('../../assets/images/main/pay-to-feed/arrow.svg');
-                }
+        &::before,
+        &::after {
+            flex: 0 1 71px;
+            content: '';
+            width: 69px;
+            height: 35px;
+            background-image: url('../../assets/images/main/pay-to-feed/arrow.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
 
-                &::before {
-                    order: 2;
-                    margin-top: calc(168px/2 - 17px);
-                    content: url('../../assets/images/main/pay-to-feed/arrow.svg');
-                }
+    &-legend {
+        display: flex;
+        justify-content: space-between;
 
-                li {
-                    width: 168px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 30px;
-
-                    &::before {
-                        content: "";
-                        height: 168px;
-                        border: 1px solid #F9804B;
-                        border-radius: 5px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-color: white;
-                    }
-
-                    p {
-                        @include bodyFont;
-                    }
-                }
-
-                .stage1 {
-                    order: 1;
-
-                    &::before {
-                        background-image: url('../../assets/images/main/pay-to-feed/pay-card.svg');
-                    }
-                }
-
-                .stage2 {
-                    order: 3;
-
-                    &::before {
-                        background-image: url('../../assets/images/main/pay-to-feed/money-to-grow.svg');
-                    }
-                }
-
-                .stage3 {
-                    order: 5;
-
-                    &::before {
-                        background-image: url('../../assets/images/main/pay-to-feed/feed-pet.svg');
-                    }
-                }
-            }
+        & li {
+            margin-top: 30px;
+            flex: 0 1 168px;
         }
     }
 }
+
+.feed-a-friend {
+    margin: 0 auto;
+}
+
+//========================FEEDBACK===================
 
 .feedback-wrapper {
     position: relative;
@@ -611,6 +676,8 @@
         right: -210px;
     }
 }
+
+//========================FOOTER===================
 
 .footer-wrapper {
     padding-top: 41px;
@@ -774,6 +841,11 @@
         }
     }
 
+    .pick-and-feed-text {
+        padding-left: 100px;
+        padding-right: 20px;
+    }
+
     .feedback-section {
         position: static;
 
@@ -784,7 +856,7 @@
     }
 }
 
-@media only screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     .content-wrapper {
         padding-left: 30px;
         padding-right: 30px;
@@ -806,15 +878,16 @@
     .about {
         padding-top: 100px;
         padding-bottom: 142px;
+    }
 
-        .content .about-text::after {
-            display: none;
-        }
+    .about-text::after {
+        display: none;
     }
 
     .gallery-content-wrapper {
-        max-width: 940px;
         padding-bottom: 140px;
+        padding-left: 30px;
+        padding-right: 30px;
 
         &::before {
             content: url('../../assets/images/main/gallery/decorative/palm_foto_small_PC.png');
@@ -834,10 +907,12 @@
         padding-bottom: 50px;
     }
 
-    .gallery-content-wrapper {
-        padding-left: 30px;
-        padding-right: 30px;
+    .pick-and-feed-content-wrapper {
+        padding-left: 47px;
+        padding-right: 47px;
     }
+
+    // .workflow {}
 
     .gallery {
         position: relative;
@@ -852,11 +927,11 @@
         }
 
         .prev {
-            left: 323px;
+            left: 34.36%;
         }
 
         .next {
-            right: 323px;
+            right: 34.36%;
         }
 
         .cards-collection-container {
@@ -866,6 +941,10 @@
 
                 .card {
                     flex-basis: 294px;
+
+                    .card-text {
+                        padding-right: 10%;
+                    }
                 }
             }
         }
@@ -889,10 +968,347 @@
 
     .footer-wrapper .page-footer {
         column-gap: 0;
-        
+
         .footer-nav {
             grid-column: 2/span 2;
             margin-right: 18%;
+        }
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .content-wrapper {
+        max-width: 600px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    //===================================HEADER===========================
+
+    .header-wrapper {
+        padding: 0;
+        min-height: 0;
+    }
+
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .small-screen-header {
+        display: block;
+    }
+
+    header .logo {
+        border: none;
+        width: 46px;
+        height: 34px;
+
+        .logo-bamboo {
+            width: 9px;
+            right: 34px;
+            bottom: 3px;
+        }
+
+        .logo-text {
+            font-size: 12px;
+            line-height: 1.16;
+        }
+    }
+
+    .large-screen-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(100%);
+        width: 100%;
+        padding: 10px 0 40px 10px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        background-color: white;
+        color: #333B41;
+        transition: 0.3s;
+
+        .logo {
+            color: inherit;
+            border: 1px solid #333B41;
+            margin-bottom: 15px;
+
+            .logo-bamboo-color {
+                fill: #333B41;
+            }
+
+            &:hover {
+                background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                background-clip: text;
+                color: transparent;
+                border-color: #F9804B;
+
+                .logo-bamboo-color {
+                    fill: #F9804B;
+                }
+            }
+        }
+
+        .nav-list {
+            flex-direction: column;
+            gap: 15px;
+
+            .current-page {
+                color: transparent;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            a:not(.current-page):hover {
+                color: #F9804B;
+            }
+        }
+
+        .copyright {
+            margin: 0;
+
+            a {
+                color: inherit;
+            }
+        }
+
+        &.active {
+            transform: translate(0);
+        }
+    }
+
+    .burger {
+        display: block;
+    }
+
+    //================================HERO=================================
+
+    .hero-wrapper {
+        background-image: url('../../assets/images/main/hero/Giant_Panda_tablet.png');
+    }
+
+    .hero {
+        padding-top: 80px;
+        padding-bottom: 40px;
+
+        .text-wrapper {
+            max-width: 600px;
+            height: 250px;
+            margin: 0;
+            gap: 0;
+            flex-direction: row;
+            justify-content: space-between;
+
+            p {
+                align-self: flex-start;
+                max-width: 255px;
+                font-size: 54px;
+            }
+
+            .main-btn {
+                align-self: flex-end;
+                order: -1;
+            }
+        }
+    }
+
+    //==============================ABOUT==================================
+
+    .about {
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
+
+    .image-container-bamboo-hat {
+        display: none;
+    }
+
+    .about-text {
+        margin: 0;
+        max-width: 495px;
+        gap: 20px;
+
+        .subtitle {
+            margin-top: 10px;
+        }
+
+        &::after {
+            content: url('../../assets/images/main/about/flower_foto1_tablet.jpg');
+            display: block;
+            top: -60px;
+            right: -127px;
+        }
+    }
+
+    //=============================GALLERY=================================
+
+    .gallery-content-wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 100px;
+        gap: 60px;
+
+        &::before {
+            left: -62px;
+        }
+
+        &::after {
+            content: url('../../assets/images/main/gallery/decorative/strelitzia_1_tablet.png');
+        }
+    }
+
+    .animal-cards {
+        grid-template-columns: 1fr 1fr;
+
+        .card:nth-child(n + 5) {
+            display: none;
+        }
+    }
+
+    //==========================PICK-AND-FEED============================
+
+    .pick-and-feed-wrapper {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .content-wrapper {
+            padding: 0;
+            max-width: 100%;
+        }
+    }
+
+    .pick-and-feed-content-wrapper {
+        padding: 10px 20px 60px;
+
+        .pick-and-feed-text {
+            padding-left: 0;
+            gap: 10px;
+
+            .subtitle+p {
+                margin: 0;
+            }
+        }
+    }
+
+    .workflow {
+        margin-top: 30px;
+        margin-bottom: 40px;
+
+        h3 {
+            margin-bottom: 20px;
+        }
+    }
+
+    .pay-to-feed-process {
+        margin-bottom: 0;
+
+        &-figures {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+
+            li {
+                position: relative;
+            }
+
+            li:not(:last-child)::before {
+                position: absolute;
+                left: 80%;
+                top: -11%;
+                content: '';
+                background-image: url('../../assets/images/main/pay-to-feed/arrow_tablet.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 57%;
+                padding-top: 19.6%;
+                z-index: 1;
+            }
+        }
+    }
+
+    //=========================FEEDBACK======================
+
+    .feedback-wrapper {
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
+
+    .feedback-section {
+
+        &::after {
+            content: url('../../assets/images/main/feedback/leav_foto_tablet.png');
+            right: 0;
+            bottom: -152px;
+        }
+
+        .feedback-track-container {
+            overflow: hidden;
+
+            .feedback-track {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                article {
+                    flex-basis: 5em;
+                    overflow: hidden;
+                }
+
+                & article:nth-child(n + 4) {
+                    display: none;
+                }
+            }
+        }
+
+        .leave-feedback {
+            align-self: center;
+        }
+    }
+
+    //=========================FOOTER=====================
+
+    .footer-wrapper {
+        padding: 12px 0;
+
+        .page-footer {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 258px;
+            align-content: space-between;
+            justify-content: space-between;
+
+            .footer-nav{
+                align-self: flex-start;
+                margin: 0;
+                min-width: 298px;
+            }
+
+            .socials{
+                order: 1;
+                gap: 20px;
+                align-self: flex-end;
+
+                a > span{
+                    display: none;
+                }
+            }
+
+            .subscription {
+                display: none;
+            }
+
+            .site-designer{
+                order: 1;
+            }
         }
     }
 }

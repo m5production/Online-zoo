@@ -95,7 +95,7 @@
 
 .header-wrapper {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     min-height: $main-header-height;
     padding: 14px 0;
@@ -605,4 +605,8 @@ body {
             margin-right: 18%;
         }
     }
+}
+
+@media only screen and (max-width: 640px) {
+
 }
