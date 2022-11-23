@@ -93,6 +93,7 @@
     position: relative;
     flex: 0 0 18px;
     height: 10px;
+    z-index: 2;
     background-color: transparent;
 
     span {
@@ -151,6 +152,7 @@
 }
 
 .large-screen-header {
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -531,6 +533,10 @@
             &:last-of-type {
                 order: 1;
             }
+
+            & p {
+                display: none;
+            }
         }
 
         .stage1-img {
@@ -862,6 +868,8 @@
         padding-right: 30px;
     }
 
+    //========================HERO======================    
+
     .hero {
         padding-top: 122px;
         padding-bottom: 47px;
@@ -875,6 +883,8 @@
         }
     }
 
+    //========================ABOUT======================    
+
     .about {
         padding-top: 100px;
         padding-bottom: 142px;
@@ -883,6 +893,8 @@
     .about-text::after {
         display: none;
     }
+
+    //========================GALLERY======================    
 
     .gallery-content-wrapper {
         padding-bottom: 140px;
@@ -901,18 +913,6 @@
             bottom: -4px;
         }
     }
-
-    .pick-and-feed-wrapper {
-        padding-top: 30px;
-        padding-bottom: 50px;
-    }
-
-    .pick-and-feed-content-wrapper {
-        padding-left: 47px;
-        padding-right: 47px;
-    }
-
-    // .workflow {}
 
     .gallery {
         position: relative;
@@ -950,6 +950,20 @@
         }
     }
 
+    //===================PICK-AND-FEED==================
+
+    .pick-and-feed-wrapper {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .pick-and-feed-content-wrapper {
+        padding-left: 47px;
+        padding-right: 47px;
+    }
+
+    //=====================FEEDBACK=====================
+
     .feedback-wrapper {
         padding-top: 100px;
         padding-bottom: 140px;
@@ -965,6 +979,8 @@
             flex-basis: 27.4%;
         }
     }
+
+    //======================FOOTER=====================
 
     .footer-wrapper .page-footer {
         column-gap: 0;
@@ -1279,25 +1295,20 @@
         padding: 12px 0;
 
         .page-footer {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            height: 258px;
-            align-content: space-between;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: min-content auto;
 
-            .footer-nav{
-                align-self: flex-start;
+            .footer-nav {
+                grid-column: 1;
                 margin: 0;
-                min-width: 298px;
             }
 
-            .socials{
-                order: 1;
+            .socials {
+                grid-row: span 2;
                 gap: 20px;
-                align-self: flex-end;
+                align-items: flex-end;
 
-                a > span{
+                a>span {
                     display: none;
                 }
             }
@@ -1306,8 +1317,241 @@
                 display: none;
             }
 
-            .site-designer{
+            .site-designer {
+                grid-column: unset;
+                grid-row: unset;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .content-wrapper {
+        max-width: 300px;
+        padding: 0 10px;
+    }
+
+    .main-btn {
+        max-width: 298px;
+        width: 93.125%;
+    }
+
+    //=========================HEADER========================
+
+    .header-wrapper {
+        position: static;
+    }
+
+    //=========================HERO========================
+
+    .hero-wrapper {
+        position: relative;
+        background-image: url('../../assets/images/main/hero/Giant_Panda_phone.png');
+    }
+
+    .hero {
+        padding-top: 41px;
+        padding-bottom: 43px;
+
+        .text-wrapper {
+            width: 128px;
+            margin-left: auto;
+            height: unset;
+
+            p {
+                font-size: 28px;
+            }
+
+            .main-btn {
+                position: absolute;
+                bottom: -74px;
+                left: 4%;
+            }
+        }
+    }
+
+    //============================ABOUT=====================
+
+    .about {
+        padding-top: 104px;
+        padding-bottom: 20px;
+    }
+
+    .about-text {
+
+        h2 {
+            font-size: 24px;
+        }
+
+        &::after {
+            content: url('../../assets/images/main/about/flower_foto1_phone.png');
+            top: -63px;
+            right: -10px;
+        }
+    }
+
+    //============================GALLERY====================
+
+    .gallery-content-wrapper {
+        padding: 0 10px 60px;
+        gap: 12px;
+
+        &::before {
+            content: url('../../assets/images/main/gallery/decorative/palm_foto_phone.png');
+            left: 0px;
+        }
+
+        &::after {
+            content: url('../../assets/images/main/gallery/decorative/strelitzia_1_phone.png');
+            right: 0px;
+        }
+    }
+
+    .gallery .cards-collection-container .animal-cards {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .gallery .gallery-btn {
+        display: none;
+    }
+
+    //========================PICK-AND-FEED===============
+
+    .pick-and-feed-wrapper .content-wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .pick-and-feed-content-wrapper {
+        padding: 20px 0 40px;
+
+        &>h2 {
+            font-size: 24px;
+        }
+    }
+
+    .pick-and-feed-text p.subtitle {
+        font-size: 18px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .pick-and-feed-text p:not(.subtitle) {
+        display: none;
+    }
+
+    .workflow {
+        margin-top: 20px;
+        margin-bottom: 30px;
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .pay-to-feed-process {
+
+        &-figures {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+
+            li {
+                max-width: 168px;
+                width: 100%;
+                position: relative;
+                margin-bottom: calc(10px + 2em);
+
+                p {
+                    @include bodyFont;
+                    display: block;
+                    position: absolute;
+                    top: calc(100% + 10px);
+                }
+            }
+
+            & li:not(:last-child)::before {
+                transform: rotate(82deg) scale(0.8);
+                left: unset;
+                top: unset;
+                right: -35%;
+                bottom: -28%;
+            }
+        }
+
+        &-legend {
+            display: none;
+        }
+    }
+
+    //=======================FEEDBACK=====================
+
+    .feedback-wrapper {
+        padding-top: 30px;
+        padding-bottom: 60px;
+    }
+
+    .feedback-section::after {
+        content: url(../../assets/images/main/feedback/leav_foto_phone.png);
+        bottom: -93px;
+    }
+
+    .feedback-section {
+
+        & .feedback-track-container {
+            padding-bottom: 0;
+        }
+
+        .leave-feedback {
+            align-self: center;
+            max-width: 240px;
+        }
+    }
+
+    //===========================FOOTER===================
+
+    .footer-wrapper {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .page-footer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .logo{
+                order: -1;
+                width: fit-content;
+                height: fit-content;
+                border: unset;
+
+                .logo-bamboo{
+                    right: 43px;
+                    bottom: 4px;
+                }
+            }
+
+            .socials{
+                order: -1;
+                flex-direction: row;
+                width: 100%;
+                gap: 30px;
+                justify-content: center;
+            }
+
+            .footer-nav{
                 order: 1;
+                align-self: unset;
+                width: 100%;
+                justify-content: space-evenly;
+            }
+
+            .site-designer{
+                p{
+                    margin-bottom: 13px;
+                }
             }
         }
     }
