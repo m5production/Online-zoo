@@ -813,6 +813,9 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+  header .nav-list > li {
+    margin-right: 10px;
+  }
   .hero {
     padding-top: 122px;
     padding-bottom: 47px;
@@ -856,10 +859,10 @@
     background-color: #E47209;
   }
   .gallery .prev {
-    left: 34.36%;
+    right: 52.83%;
   }
   .gallery .next {
-    right: 34.36%;
+    left: 52.83%;
   }
   .gallery .cards-collection-container .animal-cards {
     row-gap: 92px;
@@ -1039,9 +1042,11 @@
   }
   .gallery-content-wrapper::before {
     left: -62px;
+    z-index: -1;
   }
   .gallery-content-wrapper::after {
     content: url("../../assets/images/main/gallery/decorative/strelitzia_1_tablet.png");
+    z-index: -1;
   }
   .animal-cards {
     grid-template-columns: 1fr 1fr;
@@ -1104,6 +1109,7 @@
     content: url("../../assets/images/main/feedback/leav_foto_tablet.png");
     right: 0;
     bottom: -152px;
+    z-index: -1;
   }
   .feedback-section .feedback-track-container {
     overflow: hidden;
@@ -1149,6 +1155,47 @@
   .footer-wrapper .page-footer .site-designer {
     grid-column: unset;
     grid-row: unset;
+  }
+}
+@media screen and (max-width: 560px) {
+  .footer-wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .footer-wrapper .page-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-wrapper .page-footer .logo {
+    order: -1;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    border: unset;
+  }
+  .footer-wrapper .page-footer .logo .logo-bamboo {
+    right: 43px;
+    bottom: 4px;
+  }
+  .footer-wrapper .page-footer .socials {
+    order: -1;
+    flex-direction: row;
+    width: 100%;
+    gap: 30px;
+    justify-content: center;
+  }
+  .footer-wrapper .page-footer .footer-nav {
+    order: 1;
+    align-self: unset;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .footer-wrapper .page-footer .site-designer p {
+    margin-bottom: 13px;
   }
 }
 @media screen and (max-width: 320px) {
@@ -1286,44 +1333,5 @@
   .feedback-section .leave-feedback {
     align-self: center;
     max-width: 240px;
-  }
-  .footer-wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  .footer-wrapper .page-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-wrapper .page-footer .logo {
-    order: -1;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-    border: unset;
-  }
-  .footer-wrapper .page-footer .logo .logo-bamboo {
-    right: 43px;
-    bottom: 4px;
-  }
-  .footer-wrapper .page-footer .socials {
-    order: -1;
-    flex-direction: row;
-    width: 100%;
-    gap: 30px;
-    justify-content: center;
-  }
-  .footer-wrapper .page-footer .footer-nav {
-    order: 1;
-    align-self: unset;
-    width: 100%;
-    justify-content: space-evenly;
-  }
-  .footer-wrapper .page-footer .site-designer p {
-    margin-bottom: 13px;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -2,7 +2,9 @@
 @import '../../assets/styles/logo.scss';
 @import '../../assets/styles/variables.scss';
 
-
+body {
+    @include bodyFont;
+}
 
 .content-wrapper {
     max-width: 1160px;
@@ -91,66 +93,114 @@
 
 }
 
+.burger {
+    display: none;
+    position: relative;
+    flex: 0 0 18px;
+    height: 10px;
+    z-index: 2;
+    background-color: transparent;
+
+    span {
+        position: absolute;
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: white;
+        transition: transform 0.3s;
+
+    }
+
+    span:first-child {
+        top: 4px;
+    }
+
+    span:last-child {
+        bottom: 0;
+    }
+
+    &.active {
+
+        & span {
+            background-color: #333B41;
+            top: 50%;
+        }
+
+        & span:first-child {
+            transform: rotate(45deg);
+        }
+
+        & span:last-child {
+            transform: rotate(-45deg);
+        }
+
+        & span:nth-of-type(2) {
+            display: none;
+        }
+    }
+}
+
 //====================HEADER============================
 
 .header-wrapper {
-    position: absolute;
-    width: 100%;
     box-sizing: border-box;
-    min-height: $main-header-height;
+    min-height: 80px;
     padding: 14px 0;
     background-color: #000000;
+    z-index: 2;
+}
 
-    .main-title {
-        display: none;
+.main-title {
+    display: none;
+}
+
+.large-screen-header {
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        margin-right: 63px;
     }
 
-    .main-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    nav {
+        min-width: 40%;
+    }
 
-        .logo {
-            margin-right: 63px;
-        }
+    .copyright {
+        margin-left: auto;
 
-        nav {
-            min-width: 40%;
-        }
+        a {
+            @include bodyBtnFont;
+            color: #FFFFFF;
 
-        .copyright {
-            margin-left: auto;
-
-            a {
-                @include bodyBtnFont;
-                color: #FFFFFF;
-
-                &:hover {
-                    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
-                    color: transparent;
-                    background-clip: text;
-                }
+            &:hover {
+                background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                color: transparent;
+                background-clip: text;
             }
         }
     }
 }
 
-//====================BODY==============================
+.small-screen-header {
+    display: none;
+}
+
+//======================HERO==========================
 
 .hero {
-    height: calc(390px + $main-header-height);
-    background-image: url('../../assets/images/main/hero/Giant\ Panda.jpg');
+    height: 390px;
+    background-image: url('../../assets/images/donate/hero/panda_bg_wide_PC.jpg');
     background-repeat: no-repeat;
-    background-position-x: 35%;
-    background-position-y: 35%;
+    background-size: cover;
 }
+
+//======================DONATION-CALL==========================
 
 .subtitle {
     @include subtitleFont;
-}
-
-body {
-    @include bodyFont;
 }
 
 .donation-call-wrapper {
@@ -182,6 +232,8 @@ body {
     color: $orange;
 }
 
+//=======================PICK-AND-FEED=================
+
 .pick-and-feed-wrapper {
     max-width: 1160px;
     background: rgba(255, 255, 255, 0.52);
@@ -201,6 +253,7 @@ body {
         @include h2Font;
         color: $orange;
         margin-bottom: 20px;
+        text-align: center;
     }
 
     &-subtitle {
@@ -208,15 +261,16 @@ body {
     }
 
     &-animal-diet {
-        margin: 100px 0 8px;
+        max-width: 532px;
+        width: 100%;
+        margin: 100px 0 40px;
+
         display: grid;
-        gap: 11px;
-        grid-template-columns: 1fr 67px 1fr 1fr;
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: 29.88% auto 1fr 1fr;
         grid-template-areas: "void   void    avatar avatar"
+            "void void avatar avatar"
             "number multipl avatar avatar"
-            "legend empty   avatar avatar"
-            "legend empty   avatar avatar";
+            "legend empty  avatar avatar";
 
         .number-of-animals {
             align-self: center;
@@ -236,35 +290,28 @@ body {
         .diet-per-day {
             grid-area: legend;
             @include bodyFont;
+            margin-bottom: 30%;
         }
 
         .multiplication-sign {
             grid-area: multipl;
+            margin-right: 20px;
             align-self: center;
+            justify-self: start;
             width: 14px;
             height: 14px;
-
-            .bar {
-                width: 19px;
-                height: 2px;
-                position: absolute;
-                background-color: #333B41;
-
-
-                &:first-of-type {
-                    transform: rotate(-45deg);
-                }
-
-                &:last-of-type {
-                    transform: rotate(45deg);
-                }
-            }
+            background-image: url('../../assets/images/donate/pick-and-feed/x_icon.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
         }
 
         .animal-avatar {
+            max-width: 284px;
+            width: 100%;
+            justify-self: end;
             grid-area: avatar;
             position: relative;
-            top: -40px;
         }
     }
 
@@ -359,6 +406,8 @@ body {
         }
     }
 }
+
+//======================DONATION-SCHALE=================
 
 .donation-schale-line {
     width: 100%;
@@ -566,7 +615,10 @@ body {
     }
 }
 
+
+//===================================================
 //=====================MEDIA-QUERIES=================
+//===================================================
 
 @media only screen and (min-width: 1600px) {
     .hero {
@@ -580,8 +632,23 @@ body {
         padding-right: 30px;
     }
 
+    //=======================HEADER=====================
+
+    header .nav-list>li {
+        margin-right: 10px;
+    }
+
+    //======================HERO========================
+
+    .hero {
+        background-position: left 17.2% center;
+    }
+
+    //===================DONATION-CALL==================
+
     .donation-call-heading {
         text-align: left;
+        width: 82.7%;
         margin-bottom: 30px;
     }
 
@@ -589,13 +656,17 @@ body {
         display: none;
     }
 
-    .pick-and-feed-donation-schale-sums .sum:first-child {
+    //====================PICK-AND-FEED==================
+
+    .pick-and-feed-donation-schale-sums .sum:nth-child(1) {
         display: none;
     }
 
     .donation-call-content {
         padding-bottom: 30px;
     }
+
+    //=======================FOOTER======================
 
     .page-footer {
         column-gap: 0;
@@ -609,4 +680,311 @@ body {
 
 @media only screen and (max-width: 640px) {
 
+    .content-wrapper {
+        max-width: 600px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    //===================================HEADER===========================
+
+    .header-wrapper {
+        padding: 0;
+        min-height: 0;
+    }
+
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .small-screen-header {
+        display: block;
+    }
+
+    header .logo {
+        border: none;
+        width: 46px;
+        height: 34px;
+
+        .logo-bamboo {
+            width: 9px;
+            right: 34px;
+            bottom: 3px;
+        }
+
+        .logo-text {
+            font-size: 12px;
+            line-height: 1.16;
+        }
+    }
+
+    .large-screen-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(100%);
+        width: 100%;
+        padding: 10px 0 40px 10px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        background-color: white;
+        color: #333B41;
+        transition: 0.3s;
+
+        .logo {
+            color: inherit;
+            border: 1px solid #333B41;
+            margin-bottom: 15px;
+
+            .logo-bamboo-color {
+                fill: #333B41;
+            }
+
+            &:hover {
+                background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+                background-clip: text;
+                color: transparent;
+                border-color: #F9804B;
+
+                .logo-bamboo-color {
+                    fill: #F9804B;
+                }
+            }
+        }
+
+        .nav-list {
+            flex-direction: column;
+            gap: 15px;
+
+            .current-page {
+                color: transparent;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            a:not(.current-page):hover {
+                color: #F9804B;
+            }
+        }
+
+        .copyright {
+            margin: 0;
+
+            a {
+                color: inherit;
+            }
+        }
+
+        &.active {
+            transform: translate(0);
+        }
+    }
+
+    .burger {
+        display: block;
+    }
+
+    //========================HERO======================
+
+    .hero {
+        height: 335px;
+        background-image: url('../../assets/images/donate/hero/panda_bg_tablet.jpg');
+    }
+
+    //===================DONATION-CALL==================
+
+    .donation-call-content {
+        padding-top: 30px;
+        padding-bottom: 50px;
+        gap: 30px;
+    }
+
+    .donation-call-heading {
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .pick-and-feed-wrapper {
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+
+    .pick-and-feed-subtitle {
+        text-align: center;
+    }
+
+    .pick-and-feed-animal-diet {
+        margin-top: 50px;
+    }
+
+    .donation-schale-line-sum:nth-child(-n+3) {
+        display: none;
+    }
+
+    .pick-and-feed-donation-schale-sums .sum:nth-child(-n+3) {
+        display: none;
+    }
+
+    //======================CUSTOM-SUM===================
+
+    .custom-sum-wrapper {
+        max-width: 180px;
+        height: 42px;
+    }
+
+    //=========================FOOTER=====================
+
+    .footer-wrapper {
+        padding: 12px 0;
+
+        .page-footer {
+            display: grid;
+            grid-template-columns: min-content auto;
+
+            .footer-nav {
+                grid-column: 1;
+                margin: 0;
+            }
+
+            .socials {
+                grid-row: span 2;
+                gap: 20px;
+                align-items: flex-end;
+
+                a>span {
+                    display: none;
+                }
+            }
+
+            .subscription {
+                display: none;
+            }
+
+            .site-designer {
+                grid-column: unset;
+                grid-row: unset;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 560px) {
+
+    //===========================FOOTER===================
+
+    .footer-wrapper {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .page-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .logo {
+                order: -1;
+                width: fit-content;
+                height: fit-content;
+                border: unset;
+
+                .logo-bamboo {
+                    right: 43px;
+                    bottom: 4px;
+                }
+            }
+
+            .socials {
+                order: -1;
+                flex-direction: row;
+                width: 100%;
+                gap: 30px;
+                justify-content: center;
+            }
+
+            .footer-nav {
+                order: 1;
+                align-self: unset;
+                width: 100%;
+                justify-content: space-evenly;
+            }
+
+            .site-designer {
+                p {
+                    margin-bottom: 13px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .content-wrapper {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .hero {
+        height: 187px;
+        background-image: url(../../assets/images/donate/hero/panda_bg_phone.jpg);
+    }
+
+    .donation-info-heading {
+        font-size: 24px;
+    }
+
+    .pick-and-feed-wrapper {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .pick-and-feed {
+        width: 100%;
+    }
+    
+    .pick-and-feed-animal-diet{
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    .pick-and-feed-heading {
+        font-size: 24px;
+    }
+
+    .pick-and-feed-subtitle {
+        font-size: 16px;
+    }
+
+    .pick-and-feed-animal-diet {
+
+        .number-of-animals {
+            font-size: 40px;
+        }
+
+        .diet-per-day{
+            font-size: 9px;
+        }
+
+        .multiplication-sign{
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    .pick-and-feed-donation-schale-sums{
+        font-size: 13px;
+    }
+
+    .pick-and-feed-donation-schale {
+        margin-bottom: 25px;
+    }
+
+    .pick-and-feed p:last-child{
+        letter-spacing: -0.1px;
+    }
 }

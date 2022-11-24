@@ -1,3 +1,11 @@
+body {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #000000;
+}
+
 .content-wrapper {
   max-width: 1160px;
   padding: 0 10px;
@@ -92,51 +100,92 @@
   color: #F9804B;
 }
 
-.header-wrapper {
+.burger {
+  display: none;
+  position: relative;
+  flex: 0 0 18px;
+  height: 10px;
+  z-index: 2;
+  background-color: transparent;
+}
+.burger span {
   position: absolute;
-  width: 100%;
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.3s;
+}
+.burger span:first-child {
+  top: 4px;
+}
+.burger span:last-child {
+  bottom: 0;
+}
+.burger.active span {
+  background-color: #333B41;
+  top: 50%;
+}
+.burger.active span:first-child {
+  transform: rotate(45deg);
+}
+.burger.active span:last-child {
+  transform: rotate(-45deg);
+}
+.burger.active span:nth-of-type(2) {
+  display: none;
+}
+
+.header-wrapper {
   box-sizing: border-box;
   min-height: 80px;
   padding: 14px 0;
   background-color: #000000;
+  z-index: 2;
 }
-.header-wrapper .main-title {
+
+.main-title {
   display: none;
 }
-.header-wrapper .main-header {
+
+.large-screen-header {
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header-wrapper .main-header .logo {
+.large-screen-header .logo {
   margin-right: 63px;
 }
-.header-wrapper .main-header nav {
+.large-screen-header nav {
   min-width: 40%;
 }
-.header-wrapper .main-header .copyright {
+.large-screen-header .copyright {
   margin-left: auto;
 }
-.header-wrapper .main-header .copyright a {
+.large-screen-header .copyright a {
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 140%;
   color: #FFFFFF;
 }
-.header-wrapper .main-header .copyright a:hover {
+.large-screen-header .copyright a:hover {
   background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
   color: transparent;
   -webkit-background-clip: text;
           background-clip: text;
 }
 
+.small-screen-header {
+  display: none;
+}
+
 .hero {
-  height: 470px;
-  background-image: url("../../assets/images/main/hero/Giant Panda.jpg");
+  height: 390px;
+  background-image: url("../../assets/images/donate/hero/panda_bg_wide_PC.jpg");
   background-repeat: no-repeat;
-  background-position-x: 35%;
-  background-position-y: 35%;
+  background-size: cover;
 }
 
 .subtitle {
@@ -144,14 +193,6 @@
   font-size: 24px;
   font-weight: 400;
   line-height: 120%;
-  color: #000000;
-}
-
-body {
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 140%;
   color: #000000;
 }
 
@@ -219,17 +260,18 @@ body {
   color: #000000;
   color: #FE9013;
   margin-bottom: 20px;
+  text-align: center;
 }
 .pick-and-feed-subtitle {
   align-self: flex-start;
 }
 .pick-and-feed-animal-diet {
-  margin: 100px 0 8px;
+  max-width: 532px;
+  width: 100%;
+  margin: 100px 0 40px;
   display: grid;
-  gap: 11px;
-  grid-template-columns: 1fr 67px 1fr 1fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas: "void   void    avatar avatar" "number multipl avatar avatar" "legend empty   avatar avatar" "legend empty   avatar avatar";
+  grid-template-columns: 29.88% auto 1fr 1fr;
+  grid-template-areas: "void   void    avatar avatar" "void void avatar avatar" "number multipl avatar avatar" "legend empty  avatar avatar";
 }
 .pick-and-feed-animal-diet .number-of-animals {
   align-self: center;
@@ -250,29 +292,26 @@ body {
   font-weight: 400;
   line-height: 140%;
   color: #000000;
+  margin-bottom: 30%;
 }
 .pick-and-feed-animal-diet .multiplication-sign {
   grid-area: multipl;
+  margin-right: 20px;
   align-self: center;
+  justify-self: start;
   width: 14px;
   height: 14px;
-}
-.pick-and-feed-animal-diet .multiplication-sign .bar {
-  width: 19px;
-  height: 2px;
-  position: absolute;
-  background-color: #333B41;
-}
-.pick-and-feed-animal-diet .multiplication-sign .bar:first-of-type {
-  transform: rotate(-45deg);
-}
-.pick-and-feed-animal-diet .multiplication-sign .bar:last-of-type {
-  transform: rotate(45deg);
+  background-image: url("../../assets/images/donate/pick-and-feed/x_icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .pick-and-feed-animal-diet .animal-avatar {
+  max-width: 284px;
+  width: 100%;
+  justify-self: end;
   grid-area: avatar;
   position: relative;
-  top: -40px;
 }
 .pick-and-feed-donation-schale {
   width: 100%;
@@ -578,14 +617,21 @@ body {
     padding-left: 30px;
     padding-right: 30px;
   }
+  header .nav-list > li {
+    margin-right: 10px;
+  }
+  .hero {
+    background-position: left 17.2% center;
+  }
   .donation-call-heading {
     text-align: left;
+    width: 82.7%;
     margin-bottom: 30px;
   }
   .donation-schale-line-sum:first-child {
     display: none;
   }
-  .pick-and-feed-donation-schale-sums .sum:first-child {
+  .pick-and-feed-donation-schale-sums .sum:nth-child(1) {
     display: none;
   }
   .donation-call-content {
@@ -598,5 +644,246 @@ body {
   .page-footer .footer-nav {
     grid-column: 2/span 2;
     margin-right: 18%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .content-wrapper {
+    max-width: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .header-wrapper {
+    padding: 0;
+    min-height: 0;
+  }
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .small-screen-header {
+    display: block;
+  }
+  header .logo {
+    border: none;
+    width: 46px;
+    height: 34px;
+  }
+  header .logo .logo-bamboo {
+    width: 9px;
+    right: 34px;
+    bottom: 3px;
+  }
+  header .logo .logo-text {
+    font-size: 12px;
+    line-height: 1.16;
+  }
+  .large-screen-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(100%);
+    width: 100%;
+    padding: 10px 0 40px 10px;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    background-color: white;
+    color: #333B41;
+    transition: 0.3s;
+  }
+  .large-screen-header .logo {
+    color: inherit;
+    border: 1px solid #333B41;
+    margin-bottom: 15px;
+  }
+  .large-screen-header .logo .logo-bamboo-color {
+    fill: #333B41;
+  }
+  .large-screen-header .logo:hover {
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    border-color: #F9804B;
+  }
+  .large-screen-header .logo:hover .logo-bamboo-color {
+    fill: #F9804B;
+  }
+  .large-screen-header .nav-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .large-screen-header .nav-list .current-page {
+    color: transparent;
+  }
+  .large-screen-header .nav-list a {
+    color: inherit;
+  }
+  .large-screen-header .nav-list a:not(.current-page):hover {
+    color: #F9804B;
+  }
+  .large-screen-header .copyright {
+    margin: 0;
+  }
+  .large-screen-header .copyright a {
+    color: inherit;
+  }
+  .large-screen-header.active {
+    transform: translate(0);
+  }
+  .burger {
+    display: block;
+  }
+  .hero {
+    height: 335px;
+    background-image: url("../../assets/images/donate/hero/panda_bg_tablet.jpg");
+  }
+  .donation-call-content {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    gap: 30px;
+  }
+  .donation-call-heading {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .pick-and-feed-wrapper {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+  .pick-and-feed-subtitle {
+    text-align: center;
+  }
+  .pick-and-feed-animal-diet {
+    margin-top: 50px;
+  }
+  .donation-schale-line-sum:nth-child(-n+3) {
+    display: none;
+  }
+  .pick-and-feed-donation-schale-sums .sum:nth-child(-n+3) {
+    display: none;
+  }
+  .custom-sum-wrapper {
+    max-width: 180px;
+    height: 42px;
+  }
+  .footer-wrapper {
+    padding: 12px 0;
+  }
+  .footer-wrapper .page-footer {
+    display: grid;
+    grid-template-columns: -webkit-min-content auto;
+    grid-template-columns: min-content auto;
+  }
+  .footer-wrapper .page-footer .footer-nav {
+    grid-column: 1;
+    margin: 0;
+  }
+  .footer-wrapper .page-footer .socials {
+    grid-row: span 2;
+    gap: 20px;
+    align-items: flex-end;
+  }
+  .footer-wrapper .page-footer .socials a > span {
+    display: none;
+  }
+  .footer-wrapper .page-footer .subscription {
+    display: none;
+  }
+  .footer-wrapper .page-footer .site-designer {
+    grid-column: unset;
+    grid-row: unset;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .footer-wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .footer-wrapper .page-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-wrapper .page-footer .logo {
+    order: -1;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    border: unset;
+  }
+  .footer-wrapper .page-footer .logo .logo-bamboo {
+    right: 43px;
+    bottom: 4px;
+  }
+  .footer-wrapper .page-footer .socials {
+    order: -1;
+    flex-direction: row;
+    width: 100%;
+    gap: 30px;
+    justify-content: center;
+  }
+  .footer-wrapper .page-footer .footer-nav {
+    order: 1;
+    align-self: unset;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .footer-wrapper .page-footer .site-designer p {
+    margin-bottom: 13px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .content-wrapper {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .hero {
+    height: 187px;
+    background-image: url(../../assets/images/donate/hero/panda_bg_phone.jpg);
+  }
+  .donation-info-heading {
+    font-size: 24px;
+  }
+  .pick-and-feed-wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .pick-and-feed {
+    width: 100%;
+  }
+  .pick-and-feed-animal-diet {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .pick-and-feed-heading {
+    font-size: 24px;
+  }
+  .pick-and-feed-subtitle {
+    font-size: 16px;
+  }
+  .pick-and-feed-animal-diet .number-of-animals {
+    font-size: 40px;
+  }
+  .pick-and-feed-animal-diet .diet-per-day {
+    font-size: 9px;
+  }
+  .pick-and-feed-animal-diet .multiplication-sign {
+    width: 8px;
+    height: 8px;
+  }
+  .pick-and-feed-donation-schale-sums {
+    font-size: 13px;
+  }
+  .pick-and-feed-donation-schale {
+    margin-bottom: 25px;
+  }
+  .pick-and-feed p:last-child {
+    letter-spacing: -0.1px;
   }
 }/*# sourceMappingURL=styles.css.map */
