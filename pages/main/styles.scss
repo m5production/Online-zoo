@@ -331,6 +331,7 @@
         flex-shrink: 0;
         width: 62px;
         height: 62px;
+        z-index: 1;
         border-color: transparent;
         background-clip: content-box;
         border-radius: 50%;
@@ -350,17 +351,35 @@
     }
 }
 
+//окно просмотра панелей
+.cards-collection-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+//панель с изображениями
 .animal-cards {
-    grid-column: 2/3;
+    width: 100%;
+    position: absolute;
+    top: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, auto);
     row-gap: 20px;
     column-gap: 30px;
     margin: 0;
     padding: 0;
+    animation: 1s ease-in-out;
+
+    .card:nth-child(n+7) {
+        display: none;
+    }
 
     .card {
-        flex: 0 1 366px;
+        box-sizing: border-box;
+        width: 100%;
         border: 1px solid #FA6F32;
         border-radius: 5px;
         overflow: hidden;
@@ -428,6 +447,56 @@
             width: 11.2%;
             height: 10.3%;
             background-position: bottom 2px right -3px, bottom 0 left -2px;
+        }
+    }
+
+    &.next-pane {
+        left: calc(100% + 30px);
+        height: 100%;
+
+    }
+
+    &.prev-pane {
+        left: calc(-100% - 30px);
+        height: 100%;
+
+    }
+
+    &.to-left {
+        animation-name: left;
+    }
+
+    &.to-right {
+        animation-name: right;
+        animation-direction: reverse;
+    }
+
+    &.from-left {
+        animation-name: left;
+        animation-direction: reverse;
+    }
+
+    &.from-right {
+        animation-name: right;
+    }
+
+    @keyframes left {
+        from {
+            left: 0;
+        }
+
+        to {
+            left: calc(-100% - 30px);
+        }
+    }
+
+    @keyframes right {
+        from {
+            left: calc(100% + 30px);
+        }
+
+        to {
+            left: 0;
         }
     }
 }
@@ -870,7 +939,7 @@
 
     //=======================HEADER=====================
 
-    header .nav-list > li{
+    header .nav-list>li {
         margin-right: 10px;
     }
 
@@ -925,11 +994,6 @@
 
         .gallery-btn {
             position: absolute;
-
-            &:hover {
-                background-image: url('../../assets/images/main/gallery/decorative/arrow_left.svg');
-                background-color: #E47209;
-            }
         }
 
         .prev {
@@ -946,7 +1010,6 @@
                 row-gap: 92px;
 
                 .card {
-                    flex-basis: 294px;
 
                     .card-text {
                         padding-right: 10%;
@@ -1036,6 +1099,19 @@
         .logo-text {
             font-size: 12px;
             line-height: 1.16;
+        }
+    }
+
+    .menu-wrapper {
+        position: fixed;
+        top: 0;
+        left: 100%;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(13, 12, 13, 0.742);
+
+        &.active {
+            left: 0;
         }
     }
 
@@ -1187,7 +1263,7 @@
     }
 
     .animal-cards {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: auto auto;
 
         .card:nth-child(n + 5) {
             display: none;
