@@ -363,14 +363,12 @@
 //панель с изображениями
 .animal-cards {
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 0;
     display: grid;
     grid-template-columns: repeat(3, auto);
     row-gap: 20px;
     column-gap: 30px;
-    margin: 0;
-    padding: 0;
     animation: 1s ease-in-out;
 
     .card:nth-child(n+7) {
@@ -451,15 +449,15 @@
     }
 
     &.next-pane {
+        position: absolute;
         left: calc(100% + 30px);
         height: 100%;
-
     }
 
     &.prev-pane {
+        position: absolute;
         left: calc(-100% - 30px);
         height: 100%;
-
     }
 
     &.to-left {

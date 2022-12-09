@@ -29,7 +29,6 @@
 {
     const paneContainer = document.querySelector('.cards-collection-container');
     const cardsPane = document.querySelector('.animal-cards.active-pane');
-    paneContainer.style.height = cardsPane.offsetHeight + 'px';
     const cardsCollection = cardsPane.children;
     const collectionLength = cardsCollection.length;
     let slidingEnabled = true;
@@ -112,6 +111,8 @@
     }
 
     function slideNext() {
+        if(!slidingEnabled) return;
+        slidingEnabled = false;
         const prevPane = document.querySelector('.animal-cards.prev-pane');
         prevPane.remove();
         hidePane('to-left');
@@ -122,6 +123,8 @@
     }
 
     function slidePrev() {
+        if(!slidingEnabled) return;
+        slidingEnabled = false;
         const nextPane = document.querySelector('.animal-cards.next-pane');
         nextPane.remove();
         hidePane('to-right');

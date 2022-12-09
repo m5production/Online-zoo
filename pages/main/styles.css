@@ -343,15 +343,13 @@
 
 .animal-cards {
   width: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   display: grid;
   grid-template-columns: repeat(3, auto);
   row-gap: 20px;
   -moz-column-gap: 30px;
        column-gap: 30px;
-  margin: 0;
-  padding: 0;
   -webkit-animation: 1s ease-in-out;
           animation: 1s ease-in-out;
 }
@@ -423,10 +421,12 @@
   background-position: bottom 2px right -3px, bottom 0 left -2px;
 }
 .animal-cards.next-pane {
+  position: absolute;
   left: calc(100% + 30px);
   height: 100%;
 }
 .animal-cards.prev-pane {
+  position: absolute;
   left: calc(-100% - 30px);
   height: 100%;
 }
