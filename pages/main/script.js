@@ -86,9 +86,9 @@
     function hidePane(direction) {
         slidingEnabled = false;
         const oldPaneType =
-        direction === 'to-right'
-            ? 'next-pane'
-            : 'prev-pane';
+            direction === 'to-right'
+                ? 'next-pane'
+                : 'prev-pane';
         const activePane = document.querySelector('.animal-cards.active-pane');
         activePane.classList.add(direction);
         activePane.addEventListener('animationend', function () {
@@ -111,7 +111,7 @@
     }
 
     function slideNext() {
-        if(!slidingEnabled) return;
+        if (!slidingEnabled) return;
         slidingEnabled = false;
         const prevPane = document.querySelector('.animal-cards.prev-pane');
         prevPane.remove();
@@ -123,7 +123,7 @@
     }
 
     function slidePrev() {
-        if(!slidingEnabled) return;
+        if (!slidingEnabled) return;
         slidingEnabled = false;
         const nextPane = document.querySelector('.animal-cards.next-pane');
         nextPane.remove();
@@ -140,4 +140,53 @@
 
     next.addEventListener('click', slideNext);
     prev.addEventListener('click', slidePrev);
+}
+
+//=========TESTIMONIALS=========
+
+{
+    const feedbackTrack = document.querySelector('.feedback-track');
+    const progressBar = document.querySelector('#testimonials-progress-bar');
+    const slideDist = feedbackTrack.firstElementChild.offsetWidth + 30;
+    let currentValue = 0;
+
+    function slideOffset(currentValue) {
+        currentValue = progressBar.value;
+        const slideOffsetVal = currentValue * slideDist;
+        feedbackTrack.style.transform = `translate(-${slideOffsetVal}px)`;
+    }
+
+    progressBar.addEventListener('input', slideOffset);
+
+    //=================FEEDBACK POP-UP=================
+
+    const feedbackItems = document.querySelectorAll('.feedback-item'); // мб добавить к классу .feedback-section
+    const popUpWrapper = document.querySelector('.pop-up-wrapper'); // мб добавить к классу .feedback-section
+    const feedbackContent = document.querySelector('.feedback-section .feedback-pop-up-content');
+    const closeBtn = document.querySelector('.feedback-pop-up-close-btn');
+    const innerCont = document.querySelector('#content');
+
+    let popUpActive = true;
+
+    for (let item of feedbackItems) {
+        item.addEventListener('click', showPopUp)
+    }
+
+    function showPopUp(event) {
+        popUpActive = true;
+        innerCont.innerHTML = '';
+        innerCont.innerHTML = event.currentTarget.innerHTML;
+        popUpWrapper.style.display = 'block';
+        document.querySelector('body').style.overflow = 'hidden';
+    }
+
+    popUpWrapper.addEventListener('click', (e) =>{
+        if(e.target !== feedbackContent) closePopUp();
+    })
+
+    function closePopUp(){
+        popUpWrapper.style.display = '';
+        document.querySelector('body').style.overflow = '';
+        popUpActive = false;
+    }
 }
