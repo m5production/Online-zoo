@@ -145,6 +145,35 @@
     background-color: rgba(255, 255, 255, 0.8);
     z-index: 10;
     backdrop-filter: blur(10px);
+    animation: 1s;
+}
+
+.pop-up-visible{
+    display: block;
+    animation-name: popupShow;
+}
+
+.pop-up-hide{
+    display: block;
+    animation-name: popupHide;
+}
+
+@keyframes popupShow{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes popupHide{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
 }
 
 //========================HEADER===================
@@ -1401,7 +1430,8 @@
     }
 
     .feedback-pop-up-content {
-        margin: 100px 36px auto 20px;
+        margin: 4vh 36px auto 20px;
+        height: 85vh;
         padding: 10px;
         background-color: #F1F3F2;
         border: 2px solid;
@@ -1424,16 +1454,12 @@
         }
 
         .feedback-text {
-            max-height: 100%;
+            height: 100%;
             grid-column: span 2;
             overflow-x: hidden;
             overflow-y: auto;
         }
     }
-
-    // .pop-up-visible{
-    //     display: block;
-    // }
 
     .feedback-pop-up-close-btn {
         position: absolute;
@@ -1444,6 +1470,12 @@
         background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
         background-clip: text;
         color: transparent;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:hover{
+            transform: scale(1.3);
+        }
     }
 
 
