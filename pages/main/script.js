@@ -30,6 +30,7 @@
     const paneContainer = document.querySelector('.cards-collection-container');
     const cardsPane = document.querySelector('.animal-cards.active-pane');
     const cardsCollection = cardsPane.children;
+    setCardTextHeight(calcMaxTextHeight());
     const collectionLength = cardsCollection.length;
     let slidingEnabled = true;
 
@@ -45,6 +46,21 @@
         return browserWidth > 640 ? 6
             : browserWidth > 320 ? 4
                 : 1;
+    }
+
+    function setCardTextHeight(height){
+        for(let card of cardsCollection){
+            card.querySelector('.card-text').style.height = height + 'px';
+        }
+    }
+
+    function calcMaxTextHeight(){
+        let maxTextHeight = 0;
+        for(let card of cardsCollection){
+            const curHeight = card.querySelector('.card-text').offsetHeight;
+            maxTextHeight = Math.max(curHeight, maxTextHeight);
+        }
+        return maxTextHeight;
     }
 
     //Pane generation
@@ -146,6 +162,7 @@
 
 {
     const feedbackTrack = document.querySelector('.feedback-track');
+    if(document.documentElement.clientWidth <= 640) setFeedbackTrackHeight();
     const progressBar = document.querySelector('#testimonials-progress-bar');
     const slideDist = feedbackTrack.firstElementChild.offsetWidth + 30;
     let currentValue = 0;
@@ -156,52 +173,62 @@
         feedbackTrack.style.transform = `translate(-${slideOffsetVal}px)`;
     }
 
+    function setFeedbackTrackHeight(){
+        const trackContainer = document.querySelector('.feedback-track-container');
+        trackContainer.style.height = feedbackTrack.querySelector('.feedback-item').offsetHeight * 3 + 15 * 2 + 'px';
+        console.log(trackContainer.style.height);
+    }
+
     progressBar.addEventListener('input', slideOffset);
+
+
 
     //=================FEEDBACK POP-UP=================
 
-    const body = document.querySelector('body');
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    const feedbackItems = document.querySelectorAll('.feedback-item'); // мб добавить к классу .feedback-section
-    const popUpWrapper = document.querySelector('.pop-up-wrapper'); // мб добавить к классу .feedback-section
-    const feedbackContent = document.querySelector('.feedback-section .feedback-pop-up-content');
-    const closeBtn = document.querySelector('.feedback-pop-up-close-btn');
-    const innerCont = document.querySelector('#content');
+    {
+        const body = document.querySelector('body');
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        const feedbackItems = document.querySelectorAll('.feedback-item'); // мб добавить к классу .feedback-section
+        const popUpWrapper = document.querySelector('.pop-up-wrapper'); // мб добавить к классу .feedback-section
+        const feedbackContent = document.querySelector('.feedback-section .feedback-pop-up-content');
+        const closeBtn = document.querySelector('.feedback-pop-up-close-btn');
+        const innerCont = document.querySelector('#content');
 
-    let popUpActive = true;
+        let popUpActive = true;
 
 
 
-    popUpWrapper.addEventListener('click', (e) => {
-        if ((e.target === e.currentTarget || e.target === closeBtn) && popUpActive) {
-            closePopUp();
+        popUpWrapper.addEventListener('click', (e) => {
+            if ((e.target === e.currentTarget || e.target === closeBtn) && popUpActive) {
+                closePopUp();
+            }
+        })
+
+        for (let item of feedbackItems) {
+            item.addEventListener('click', showPopUp)
         }
-    })
 
-    for (let item of feedbackItems) {
-        item.addEventListener('click', showPopUp)
-    }
+        function showPopUp(event) {
+            popUpActive = true;
+            innerCont.innerHTML = '';
+            innerCont.innerHTML = event.currentTarget.innerHTML;
+            popUpWrapper.classList.add('pop-up-visible');
+            body.style.overflow = 'hidden';
+            body.style.paddingRight = `${scrollBarWidth}px`;
+        }
 
-    function showPopUp(event) {
-        popUpActive = true;
-        innerCont.innerHTML = '';
-        innerCont.innerHTML = event.currentTarget.innerHTML;
-        popUpWrapper.classList.add('pop-up-visible');
-        body.style.overflow = 'hidden';
-        body.style.paddingRight = `${scrollBarWidth}px`;
-    }
+        function closePopUp() {
+            popUpActive = false;
+            popUpWrapper.classList.remove('pop-up-visible');
+            popUpWrapper.classList.add('pop-up-hide');
+            popUpWrapper.addEventListener('animationend', colatteralOperations);
 
-    function closePopUp() {
-        popUpActive = false;
-        popUpWrapper.classList.remove('pop-up-visible');
-        popUpWrapper.classList.add('pop-up-hide');
-        popUpWrapper.addEventListener('animationend', colatteralOperations);
-
-        function colatteralOperations() {
-            popUpWrapper.classList.remove('pop-up-hide');
-            body.style.overflow = '';
-            body.style.paddingRight = '';
-            popUpWrapper.removeEventListener('animationend', colatteralOperations);
+            function colatteralOperations() {
+                popUpWrapper.classList.remove('pop-up-hide');
+                body.style.overflow = '';
+                body.style.paddingRight = '';
+                popUpWrapper.removeEventListener('animationend', colatteralOperations);
+            }
         }
     }
 }

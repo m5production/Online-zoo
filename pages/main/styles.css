@@ -137,8 +137,8 @@
   z-index: 10;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  -webkit-animation: 1s;
-          animation: 1s;
+  -webkit-animation: 0.3s;
+          animation: 0.3s;
 }
 
 .pop-up-visible {
@@ -444,6 +444,7 @@
   z-index: -1;
 }
 .animal-cards .card .card-text {
+  box-sizing: border-box;
   padding: 8px 33px 14px 16px;
   transition: all 0.3s;
 }
@@ -484,12 +485,10 @@
 .animal-cards.next-pane {
   position: absolute;
   left: calc(100% + 30px);
-  height: 100%;
 }
 .animal-cards.prev-pane {
   position: absolute;
   left: calc(-100% - 30px);
-  height: 100%;
 }
 .animal-cards.to-left {
   -webkit-animation-name: left;
@@ -1082,6 +1081,7 @@
     background-color: rgba(13, 12, 13, 0.742);
   }
   .menu-wrapper.active {
+    z-index: 2;
     left: 0;
   }
   .large-screen-header {
@@ -1264,16 +1264,13 @@
     z-index: -1;
   }
   .feedback-section .feedback-track-container {
-    overflow: hidden;
+    overflow: auto;
     margin-bottom: 40px;
   }
   .feedback-section .feedback-track-container .feedback-track {
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
-  .feedback-section .feedback-track-container .feedback-track article:nth-child(n+4) {
-    display: none;
   }
   .feedback-section .progress-bar {
     display: none;
@@ -1287,8 +1284,9 @@
     cursor: pointer;
   }
   .feedback-pop-up-content {
-    margin: 4vh 36px auto 20px;
-    height: 85vh;
+    box-sizing: border-box;
+    margin: 20px 36px auto 20px;
+    max-height: calc(100% - 40px);
     padding: 10px;
     background-color: #F1F3F2;
     border: 2px solid;
@@ -1297,6 +1295,7 @@
     display: grid;
     gap: 10px;
     grid-template-columns: 37px 1fr;
+    grid-template-rows: 1fr auto;
   }
   .feedback-pop-up-content .user-data h1 {
     font-family: Roboto, Arial, sans-serif;
@@ -1314,7 +1313,6 @@
     color: #BDBDBD;
   }
   .feedback-pop-up-content .feedback-text {
-    height: 100%;
     grid-column: span 2;
     overflow-x: hidden;
     overflow-y: auto;

@@ -122,32 +122,32 @@
                         <p>Amount</p>
                         <div class="pick-and-feed-donation-schale-progress-bar">
                             <div class="donation-schale-line">
-                                <div class="donation-schale-line-sum" id="5000"></div>
-                                <div class="donation-schale-line-sum" id="2000"></div>
-                                <div class="donation-schale-line-sum chosen" id="1000"></div>
-                                <div class="donation-schale-line-sum" id="500"></div>
-                                <div class="donation-schale-line-sum" id="250"></div>
-                                <div class="donation-schale-line-sum" id="100"></div>
-                                <div class="donation-schale-line-sum" id="50"></div>
-                                <div class="donation-schale-line-sum" id="25"></div>
+                                <div class="donation-schale-line-sum" id="dot5000"></div>
+                                <div class="donation-schale-line-sum" id="dot2000"></div>
+                                <div class="donation-schale-line-sum chosen" id="dot1000"></div>
+                                <div class="donation-schale-line-sum" id="dot500"></div>
+                                <div class="donation-schale-line-sum" id="dot250"></div>
+                                <div class="donation-schale-line-sum" id="dot100"></div>
+                                <div class="donation-schale-line-sum" id="dot50"></div>
+                                <div class="donation-schale-line-sum" id="dot25"></div>
                             </div>
                         </div>
                         <ul class="pick-and-feed-donation-schale-sums">
-                            <li class="sum">&dollar;5000</li>
-                            <li class="sum">&dollar;2000</li>
-                            <li class="sum chosen">&dollar;1000</li>
-                            <li class="sum">&dollar;500</li>
-                            <li class="sum">&dollar;250</li>
-                            <li class="sum">&dollar;100</li>
-                            <li class="sum">&dollar;50</li>
-                            <li class="sum">&dollar;25</li>
+                            <li class="sum" id="sum5000">&dollar;5000</li>
+                            <li class="sum" id="sum2000">&dollar;2000</li>
+                            <li class="sum chosen" id="sum1000">&dollar;1000</li>
+                            <li class="sum" id="sum500">&dollar;500</li>
+                            <li class="sum" id="sum250">&dollar;250</li>
+                            <li class="sum" id="sum100">&dollar;100</li>
+                            <li class="sum" id="sum50">&dollar;50</li>
+                            <li class="sum" id="sum25">&dollar;25</li>
                         </ul>
                     </div>
 
                     <form class="pick-and-feed-user-donation-custom" action="">
                         <div class="custom-sum-wrapper">
                             <input class="pick-and-feed-user-donation-custom-sum" type="number"
-                                name="pick-and-feed-user-donation-field" id="donation" placeholder="Another amount">
+                                name="pick-and-feed-user-donation-field" id="custom-sum-input" placeholder="Another amount" value="1000">
                             <span class="custom-sum-currency-sign">&dollar;</span>
                         </div>
                         <div class="pick-and-feed-user-donation-custom-frequency">
@@ -157,7 +157,7 @@
                             </div>
 
                             <div class="second-option">
-                                <input class="frequency-option" type="radio" id="once" name="donation-frequency">
+                                <input class="frequency-option" type="radio" id="once" name="donation-frequency" checked>
                                 <label class="frequency-option" for="once">Once</label>
                             </div>
                         </div>
