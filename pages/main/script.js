@@ -1,29 +1,5 @@
 'use strict'
 
-//============BURGER============
-{
-    const burgerBtn = document.querySelector('#burger-btn');
-    burgerBtn.addEventListener('click', toggleNav);
-    const header = document.querySelector('.large-screen-header');
-    const menuWrapper = document.querySelector('.menu-wrapper');
-    const body = document.querySelector('body');
-
-    menuWrapper.onclick = (e) => {
-        if (e.target !== header) {
-            toggleNav();
-        }
-        console.log(':)');
-    }
-
-    function toggleNav() {
-        menuWrapper.classList.toggle('active');
-        burgerBtn.classList.toggle('active');
-        header.classList.toggle('active');
-        if (getComputedStyle(body).overflow !== 'hidden') body.style.overflow = 'hidden';
-        else body.style.overflow = '';
-    }
-}
-
 //===========GALLERY============
 
 {
@@ -34,7 +10,7 @@
     const collectionLength = cardsCollection.length;
     let slidingEnabled = true;
 
-    let numberOfVisibleItems = getNumberOfVisibleItems();
+    const numberOfVisibleItems = getNumberOfVisibleItems();
     let firstVisibleIndex = 0;
     let lastVisibleIndex = numberOfVisibleItems - 1;
 
@@ -48,15 +24,15 @@
                 : 1;
     }
 
-    function setCardTextHeight(height){
-        for(let card of cardsCollection){
+    function setCardTextHeight(height) {
+        for (let card of cardsCollection) {
             card.querySelector('.card-text').style.height = height + 'px';
         }
     }
 
-    function calcMaxTextHeight(){
+    function calcMaxTextHeight() {
         let maxTextHeight = 0;
-        for(let card of cardsCollection){
+        for (let card of cardsCollection) {
             const curHeight = card.querySelector('.card-text').offsetHeight;
             maxTextHeight = Math.max(curHeight, maxTextHeight);
         }
@@ -90,13 +66,6 @@
 
         return prevPane;
     }
-
-    //=========TESTS=================
-    // paneContainer.innerHTML = '';
-    // const nextPane = makePrev();
-    // nextPane.classList.add('animal-cards');
-    // paneContainer.append(nextPane);
-
 
     //Sliding operations
     function hidePane(direction) {
@@ -162,7 +131,7 @@
 
 {
     const feedbackTrack = document.querySelector('.feedback-track');
-    if(document.documentElement.clientWidth <= 640) setFeedbackTrackHeight();
+    if (document.documentElement.clientWidth <= 640) setFeedbackTrackHeight();
     const progressBar = document.querySelector('#testimonials-progress-bar');
     const slideDist = feedbackTrack.firstElementChild.offsetWidth + 30;
     let currentValue = 0;
@@ -173,7 +142,7 @@
         feedbackTrack.style.transform = `translate(-${slideOffsetVal}px)`;
     }
 
-    function setFeedbackTrackHeight(){
+    function setFeedbackTrackHeight() {
         const trackContainer = document.querySelector('.feedback-track-container');
         trackContainer.style.height = feedbackTrack.querySelector('.feedback-item').offsetHeight * 3 + 15 * 2 + 'px';
         console.log(trackContainer.style.height);
@@ -186,7 +155,7 @@
     //=================FEEDBACK POP-UP=================
 
     {
-        const body = document.querySelector('body');
+        const body = document.body;
         const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
         const feedbackItems = document.querySelectorAll('.feedback-item'); // мб добавить к классу .feedback-section
         const popUpWrapper = document.querySelector('.pop-up-wrapper'); // мб добавить к классу .feedback-section
@@ -196,16 +165,16 @@
 
         let popUpActive = true;
 
-
-
         popUpWrapper.addEventListener('click', (e) => {
             if ((e.target === e.currentTarget || e.target === closeBtn) && popUpActive) {
                 closePopUp();
             }
         })
 
-        for (let item of feedbackItems) {
-            item.addEventListener('click', showPopUp)
+        if (document.documentElement.clientWidth <= 640) {
+            for (let item of feedbackItems) {
+                item.addEventListener('click', showPopUp)
+            }
         }
 
         function showPopUp(event) {

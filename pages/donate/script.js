@@ -2,18 +2,17 @@
 
 //============BURGER============
 {
-    const burgerBtn = document.querySelector('#burger-btn');
+    const burgerBtn = document.getElementById('burger-btn');
     burgerBtn.addEventListener('click', toggleNav);
     const header = document.querySelector('.large-screen-header');
     const menuWrapper = document.querySelector('.menu-wrapper');
-    const body = document.querySelector('body');
+    const body = document.body;
 
-    menuWrapper.onclick = (e) => {
-        if (e.target !== header) {
+    menuWrapper.addEventListener('click', (e) => {
+        if (!header.contains(e.target)) {
             toggleNav();
         }
-        console.log(':)');
-    }
+    });
 
     function toggleNav() {
         menuWrapper.classList.toggle('active');

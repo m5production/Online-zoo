@@ -97,6 +97,7 @@
   height: 10px;
   z-index: 2;
   background-color: transparent;
+  cursor: pointer;
 }
 .burger span {
   position: absolute;
@@ -330,7 +331,7 @@
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 140%;
+  line-height: inherit;
   color: #000000;
 }
 .about-text::after {
@@ -585,7 +586,7 @@
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 140%;
+  line-height: inherit;
   color: #000000;
   line-height: 130%;
   color: #333B41;
@@ -777,7 +778,7 @@
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 140%;
+  line-height: inherit;
   color: #000000;
   line-height: 120%;
 }
@@ -802,7 +803,7 @@
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 140%;
+  line-height: inherit;
   color: #000000;
   color: white;
   display: grid;
@@ -1301,7 +1302,7 @@
     font-family: Roboto, Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
-    line-height: 140%;
+    line-height: inherit;
     color: #000000;
     line-height: 120%;
   }
@@ -1507,7 +1508,7 @@
     font-family: Roboto, Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
-    line-height: 140%;
+    line-height: inherit;
     color: #000000;
     display: block;
     position: absolute;
