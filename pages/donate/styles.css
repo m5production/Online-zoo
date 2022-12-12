@@ -411,8 +411,9 @@ body {
 .pick-and-feed-user-donation-custom-sum:focus {
   outline-color: #FE9013;
 }
-.pick-and-feed-user-donation-custom-sum:focus ~ .custom-sum-currency-sign, .pick-and-feed-user-donation-custom-sum:hover ~ .custom-sum-currency-sign {
-  right: 20px;
+.pick-and-feed-user-donation-custom-sum::-webkit-outer-spin-button, .pick-and-feed-user-donation-custom-sum::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
 }
 .pick-and-feed-user-donation-custom-frequency {
   margin-bottom: 31px;
@@ -468,8 +469,10 @@ body {
 }
 
 .custom-sum-wrapper {
+  width: 100%;
   max-width: 268px;
-  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0;
   margin-bottom: 25px;
   position: relative;

@@ -30,11 +30,15 @@
     const customSumField = document.querySelector('#custom-sum-input');
     const dotsLine = document.querySelector('.donation-schale-line');
     const sumsRow = document.querySelector('.pick-and-feed-donation-schale-sums');
-    setInitialState(document.documentElement.clientWidth);
+    selectSum(100);
 
     //==============SUM-CHOICE===============
     const dotsCollection = dotsLine.querySelectorAll('.donation-schale-line-sum');
     const sumsCollection = sumsRow.querySelectorAll('.sum');
+
+    customSumField.addEventListener('input', function () {
+        selectSum(this.value);
+    })
 
     setSumChooseEventListener(dotsCollection);
     setSumChooseEventListener(sumsCollection);
@@ -48,16 +52,17 @@
         }
     }
 
-    function setInitialState(screenWidth) {
-        if (screenWidth > 640) return;
-        selectSum(100);
+    function selectSum(sum) {
+        manipulateClass(dotsLine.querySelector('.chosen'), 'remove', 'chosen');
+        manipulateClass(sumsRow.querySelector('.chosen'), 'remove', 'chosen');
+        manipulateClass(dotsLine.querySelector(`#dot${sum}`), 'add', 'chosen');
+        manipulateClass(sumsRow.querySelector(`#sum${sum}`), 'add', 'chosen');
+        customSumField.value = sum;
     }
 
-    function selectSum(sum) {
-        dotsLine.querySelector('.chosen').classList.remove('chosen');
-        dotsLine.querySelector(`#dot${sum}`).classList.add('chosen');
-        sumsRow.querySelector('.chosen').classList.remove('chosen');
-        sumsRow.querySelector(`#sum${sum}`).classList.add('chosen');
-        customSumField.value = sum;
+    function manipulateClass(obj, action, classN){
+        if(obj) {
+            obj.classList[action](classN);
+        }
     }
 }

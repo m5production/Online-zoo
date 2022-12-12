@@ -398,10 +398,12 @@ body {
                 outline-color: $orange;
             }
 
-            &:focus~.custom-sum-currency-sign,
-            &:hover~.custom-sum-currency-sign {
-                right: 20px;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button{
+                appearance: none;
             }
+
+
         }
 
         &-frequency {
@@ -469,8 +471,10 @@ body {
 }
 
 .custom-sum-wrapper {
+    width: 100%;
     max-width: 268px;
-    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     margin-bottom: 25px;
     position: relative;
