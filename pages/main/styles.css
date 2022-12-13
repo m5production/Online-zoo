@@ -143,13 +143,15 @@
 }
 
 .pop-up-visible {
-  display: block;
+  display: flex;
+  align-items: center;
   -webkit-animation-name: popupShow;
           animation-name: popupShow;
 }
 
 .pop-up-hide {
-  display: block;
+  display: flex;
+  align-items: center;
   -webkit-animation-name: popupHide;
           animation-name: popupHide;
 }
@@ -1286,7 +1288,8 @@
   }
   .feedback-pop-up-content {
     box-sizing: border-box;
-    margin: 20px 36px auto 20px;
+    margin-left: 20px;
+    margin-right: 40px;
     max-height: calc(100% - 40px);
     padding: 10px;
     background-color: #F1F3F2;

@@ -150,12 +150,14 @@
 }
 
 .pop-up-visible{
-    display: block;
+    display: flex;
+    align-items: center;
     animation-name: popupShow;
 }
 
 .pop-up-hide{
-    display: block;
+    display: flex;
+    align-items: center;
     animation-name: popupHide;
 }
 
@@ -1430,7 +1432,8 @@
     .feedback-pop-up-content {
         $margin-top: 20px;
         box-sizing: border-box;
-        margin: $margin-top 36px auto 20px;
+        margin-left: 20px;
+        margin-right: 40px;
         max-height: calc(100% - 2*$margin-top);
         padding: 10px;
         background-color: #F1F3F2;

@@ -161,7 +161,7 @@
         const popUpWrapper = document.querySelector('.pop-up-wrapper'); // мб добавить к классу .feedback-section
         const feedbackContent = document.querySelector('.feedback-section .feedback-pop-up-content');
         const closeBtn = document.querySelector('.feedback-pop-up-close-btn');
-        const innerCont = document.querySelector('#content');
+        const innerCont = document.getElementById('content');
 
         let popUpActive = true;
 
